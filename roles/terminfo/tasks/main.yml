@@ -1,0 +1,14 @@
+---
+- name: Create TERMINFO directory
+  file:
+    path: "{{ terminfo_dir }}"
+    state: directory
+
+- name: Compile TERMINFO entry-description
+  command:
+    tic -o {{ terminfo_dir }} {{ role_path}}/files/{{ item }}.terminfo
+  args:
+    creates: "{{ terminfo_dir }}/74/{{ item }}"
+  with_items:
+    - tmux
+    - tmux-256color
