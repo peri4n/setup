@@ -2,3 +2,4 @@
 - hosts: localhost
   roles: 
     - { role: 'terminfo', tags: 'terminfo' }
+    - { role: 'fonts', tags: 'fonts' }

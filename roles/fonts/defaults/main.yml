@@ -1,0 +1,2 @@
+---
+fonts_dir: "{{ ansible_env.HOME }}{{ '/Library/Fonts' if ansible_system == 'Darwin' else '/.fonts' }}"

@@ -1,0 +1,12 @@
+---
+- name: Create private fonts directory
+  file:
+    path: "{{ fonts_dir }}"
+    state: directory
+
+- name: Uncompress fonts to private font directory
+  unarchive:
+    src: "{{ item }}"
+    dest: "{{ fonts_dir }}"
+  with_fileglob:
+    - "{{ role_path }}/files/*"
