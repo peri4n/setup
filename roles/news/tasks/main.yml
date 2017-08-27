@@ -1,0 +1,6 @@
+---
+- name: Link newsbeuter config file
+  file:
+    path: "{{ ansible_env.HOME }}/.config/newsbeuter"
+    src: "{{ role_path }}/files/newsbeuter"
+    state: link

@@ -3,3 +3,4 @@
   roles: 
     - { role: 'terminfo', tags: 'terminfo' }
     - { role: 'fonts', tags: 'fonts' }
+    - { role: 'news', tags: 'news' }

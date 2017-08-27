@@ -1,0 +1,28 @@
+# interface
+confirm-exit yes
+bind-key k up
+bind-key j down
+bind-key ^U pageup
+bind-key ^D pagedown
+bind-key O open-in-browser-and-mark-read
+
+auto-reload yes
+browser "w3m %u"
+
+download-path "~/podcasts/%n"
+max-downloads 5
+player mplayer
+podcast-auto-enqueue yes
+
+# Keep an archive
+history-limit       0
+keep-articles-days  0
+
+# color settings
+color listnormal        color244 color234 
+color listfocus         color166 color235
+color info              color136 color235
+color background        color244 color234
+color article           color244 color234
+color listnormal_unread color166 color234 bold
+color listfocus_unread  color166 color235
