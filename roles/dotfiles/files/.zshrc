@@ -35,43 +35,18 @@ HISTSIZE=1000 # max number of commands written to history per session
 
 SAVEHIST=100000 # max number of lines in the history file
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export EDITOR=nvim
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
+source $HOME/.zsh/exports
+source $HOME/.zsh/aliases
+source $HOME/.zsh/shims
+source $HOME/.zsh/functions
 
 # Enable syntax highlighting
-if [[ $(uname) == Darwin ]]; then
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # SHIMS
 
 eval "$(fasd --init posix-alias zsh-hook)"
-
-# pyenv
-eval "$(pyenv init -)"
-
-# jenv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-# node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-[ -s "/usr/share/autojump/autojump.sh" ] && . "/usr/share/autojump/autojump.sh"
-
-# Add RBENV to PATH for scripting
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Add stack binaries
-export PATH="$HOME/.local/bin:$PATH"
 #
 # base 16 color theme
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -81,77 +56,3 @@ base16_default-dark
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GPG_TTY=$(tty)
-
-##########
-# ALIASES
-##########
-
-# utility
-alias nv='nvim'
-alias gw='./gradlew'
-alias gwi='./gradlew -i'
-alias mkdir='mkdir -pv'
-alias o='open'
-alias x='exit'
-
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-
-alias l='ls -lGh'
-alias ll='ls -alGh'
-
-alias ff="find . -type f -name"
-
-# post aliases
-alias -g M='| more'
-alias -g C='| pbcopy'
-alias -g G='| grep'
-
-# git
-alias git=hub
-alias g=git
-alias ga='git add'
-alias gaa='git add --all'
-alias gb='git branch'
-alias gc='git commit -v'
-alias gcan='git commit --amend --no-edit'
-alias gcb='git checkout -b'
-alias gco='git checkout'
-alias gcm='git checkout master'
-alias gcp='git cherry-pick'
-alias gcpa='git cherry-pick --abort'
-alias gcpc='git cherry-pick --continue'
-alias gd='git diff'
-alias gda='git diff --cached'
-alias gf='git fetch'
-alias gl='git pull'
-alias glg='git log --stat --color'
-alias glog='git log --oneline --decorate --color --graph'
-alias glol='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-alias gp='git push'
-alias gst='git status --short --branch'
-alias grc='git rev-parse HEAD | pbcopy'
-
-# vagrant
-alias vup='vagrant up'
-alias vdn='vagrant halt'
-
-# taskwarrior
-alias tw='task'
-alias twa='task add'
-alias twd='task done'
-alias twl='task log'
-
-# password store
-alias pw='pass'
-
-##########
-# FUNCTIONS
-##########
-
-mcd () {
-    mkdir "$1" && cd "$1"
-}
-

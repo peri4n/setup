@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
-  roles: 
+  roles:
     - { role: 'terminfo', tags: 'terminfo' }
     - { role: 'fonts', tags: 'fonts' }
     - { role: 'news', tags: 'news' }
+    - { role: 'dotfiles', tags: 'dotfiles' }

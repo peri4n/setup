@@ -1,0 +1,13 @@
+[push]
+    default = simple
+[user]
+    name = Fabian Bull
+    email = fabian.bull@bioinform.at
+    signingkey = 1DE6482F
+[core]
+    excludesfile = /Users/fbull/.gitignore_global
+    editor = nvim
+[commit]
+    gpgsign = true
+[gpg]
+    program = gpg2
