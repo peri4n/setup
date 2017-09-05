@@ -100,6 +100,9 @@ let g:airline_right_sep=''
 let g:airline_theme='base16'
 set laststatus=2
 
+" vim-notes options
+:let g:notes_directories = ['~/docs/notes']
+
 " ansible options
 let g:ansible_options = {'ignore_blank_lines': 0}
 
@@ -128,6 +131,11 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 
 nnoremap <leader>ff :FZF<cr>
 nnoremap <leader>fa :Ag<cr>
+
+iabbrev @@ fabian.bull@bioinform.at
+iabbrev waht what
+iabbrev tehn then
+iabbrev adn and
 
 " Reread buffer when the file is changed in an other editor
 au FocusGained,BufEnter * checktime
