@@ -1,10 +1,12 @@
-# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
-# get started fast.
-
 [general]
-accounts = Gmail,Work
+accounts = Gmail,Work,BioinformatSpam,BioinformatFabianBull
 pythonfile = ~/.offlineimap.py
 maxsyncaccounts = 4
+
+[DEFAULT]
+sslcacertfile = /etc/ssl/cert.pem
+ssl = yes
+realdelete = no
 
 [Account Gmail]
 localrepository = GmailLocal
@@ -14,9 +16,7 @@ autorefresh = 5
 [Repository GmailLocal]
 type = Maildir
 localfolders = ~/Mail/bull_fabian_gmail
-nametrans = lambda folder: {'drafts':  '[Google Mail]/Drafts',
-                            'sent':    '[Google Mail]/Sent Mail',
-                            'archive': '[Google Mail]/All Mail'
+nametrans = lambda folder: {'archive': '[Google Mail]/All Mail'
                             }.get(folder, folder)
 
 [Repository GmailRemote]
@@ -25,13 +25,15 @@ type = Gmail
 remotehost = imap.googlemail.com
 remoteuser = bull.fabian@googlemail.com
 remotepasseval = get_pass('Private/gmail_offlineimap')
-realdelete = no
-sslcacertfile = /etc/ssl/cert.pem
-nametrans = lambda folder: {'[Google Mail]/Drafts':    'drafts',
-                            '[Google Mail]/Sent Mail': 'sent',
-                            '[Google Mail]/All Mail':  'archive'
+nametrans = lambda folder: {'[Google Mail]/All Mail':  'archive'
                             }.get(folder, folder)
-folderfilter = lambda folder: folder not in ['[Google Mail]/Trash','[Google Mail]/Spam','[Google Mail]/Important','[Google Mail]/Starred']
+folderfilter = lambda folder: folder not in [
+    '[Google Mail]/Trash',
+    '[Google Mail]/Spam',
+    '[Google Mail]/Important',
+    '[Google Mail]/Starred',
+    '[Google Mail]/Drafts',
+    '[Google mail]/Sent Mail']
 
 
 [Account Work]
@@ -42,9 +44,7 @@ autorefresh = 5
 [Repository DatameerLocal]
 type = Maildir
 localfolders = ~/Mail/fabian_bull_datameer
-nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
-                            'sent':    '[Gmail]/Sent Mail',
-                            'archive': '[Gmail]/All Mail'
+nametrans = lambda folder: {'archive': '[Gmail]/All Mail'
                             }.get(folder, folder)
 
 [Repository DatameerRemote]
@@ -53,10 +53,54 @@ type = Gmail
 remotehost = imap.googlemail.com
 remoteuser = fabian.bull@datameer.com
 remotepasseval = get_pass('Datameer/google')
-realdelete = no
-sslcacertfile = /etc/ssl/cert.pem
-nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
-                            '[Gmail]/Sent Mail': 'sent',
-                            '[Gmail]/All Mail':  'archive'
+nametrans = lambda folder: {'[Gmail]/All Mail':  'archive'
                             }.get(folder, folder)
-folderfilter = lambda folder: folder not in ['[Gmail]/Trash','[Gmail]/Spam','[Gmail]/Important','[Gmail]/Starred']
+folderfilter = lambda folder: folder not in [
+    '[Gmail]/Trash',
+    '[Gmail]/Spam',
+    '[Gmail]/Important',
+    '[Gmail]/Starred',
+    '[Gmail]/Drafts',
+    '[Gmail]/Sent Mail']
+
+[Account BioinformatSpam]
+
+localrepository = BioinformatSpamLocal
+remoterepository = BioinformatSpamRemote
+
+[Repository BioinformatSpamLocal]
+type = Maildir
+localfolders = ~/Mail/spam_bioinformat
+
+[Repository BioinformatSpamRemote]
+maxconnections = 5
+type = IMAP
+remotehost = nunki.uberspace.de
+remoteuser = spam@bioinform.at
+remotepasseval = get_pass('Private/Email/spam_bioinform_at')
+folderfilter = lambda folder: folder not in [
+    'Deleted Messages',
+    'Drafts',
+    'Junk',
+    'Sent Messages']
+
+[Account BioinformatFabianBull]
+
+localrepository = BioinformatFabianBullLocal
+remoterepository = BioinformatFabianBullRemote
+
+[Repository BioinformatFabianBullLocal]
+type = Maildir
+localfolders = ~/Mail/fabian_bull_bioinformat
+
+[Repository BioinformatFabianBullRemote]
+maxconnections = 5
+type = IMAP
+remotehost = nunki.uberspace.de
+remoteuser = fabian.bull@bioinform.at
+remotepasseval = get_pass('Private/Email/fabian_bull_bioinform_at')
+folderfilter = lambda folder: folder not in [
+    'Deleted Messages',
+    'Drafts',
+    'Junk',
+    'Sent Messages']
