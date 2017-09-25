@@ -1,0 +1,15 @@
+---
+
+- name: Link pyenv
+  file:
+    path: "{{ ansible_env.HOME }}/.pyenv"
+    src: "{{ role_path }}/files/.pyenv"
+    state: link
+
+- name: Install shim
+  file:
+    path: "{{ ansible_env.HOME }}/.zsh/shims/python.sh"
+    src: "{{ role_path }}/files/python.sh"
+    state: link
+
+
