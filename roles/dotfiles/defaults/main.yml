@@ -7,3 +7,4 @@ dotfiles:
   - .tmuxinator
   - .zsh
   - .zshrc
+  - .zprofile

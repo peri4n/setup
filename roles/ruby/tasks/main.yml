@@ -3,13 +3,13 @@
 - name: Link rbenv
   file:
     path: "{{ ansible_env.HOME }}/.rbenv"
-    src: "{{ role_path }}/files/.rbenv"
+    src: "{{ role_path }}/files/rbenv"
     state: link
 
 - name: Install shim
   file:
-    path: "{{ ansible_env.HOME }}/.zsh/shims/python.sh"
-    src: "{{ role_path }}/files/python.sh"
+    path: "{{ ansible_env.HOME }}/.zsh/shims/ruby.sh"
+    src: "{{ role_path }}/files/ruby.sh"
     state: link
 
 

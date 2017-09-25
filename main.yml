@@ -5,3 +5,7 @@
     - { role: 'fonts', tags: 'fonts' }
     - { role: 'news', tags: 'news' }
     - { role: 'dotfiles', tags: 'dotfiles' }
+    - { role: 'ruby', tags: 'ruby' }
+    - { role: 'python', tags: 'python' }
+    - { role: 'java', tags: 'java' }
+    - { role: 'javascript', tags: 'javascript' }
