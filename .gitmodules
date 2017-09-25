@@ -13,3 +13,6 @@
 [submodule "roles/python/files/pyenv"]
 	path = roles/python/files/pyenv
 	url = https://github.com/pyenv/pyenv.git
+[submodule "roles/ruby/files/rbenv"]
+	path = roles/ruby/files/rbenv
+	url = https://github.com/rbenv/rbenv.git
