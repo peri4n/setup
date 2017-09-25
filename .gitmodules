@@ -16,3 +16,6 @@
 [submodule "roles/ruby/files/rbenv"]
 	path = roles/ruby/files/rbenv
 	url = https://github.com/rbenv/rbenv.git
+[submodule "roles/javascript/files/nvm"]
+	path = roles/javascript/files/nvm
+	url = https://github.com/creationix/nvm.git

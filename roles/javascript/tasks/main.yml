@@ -1,0 +1,15 @@
+---
+
+- name: Link nvm
+  file:
+    path: "{{ ansible_env.HOME }}/.nvm"
+    src: "{{ role_path }}/files/nvm"
+    state: link
+
+- name: Install nvm shim
+  file:
+    path: "{{ ansible_env.HOME }}/.zsh/shims/javascript.sh"
+    src: "{{ role_path }}/files/javascript.sh"
+    state: link
+
+
