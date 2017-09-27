@@ -9,3 +9,4 @@
     - { role: 'python', tags: 'python' }
     - { role: 'java', tags: 'java' }
     - { role: 'javascript', tags: 'javascript' }
+    - { role: 'mail', tags: 'mail' }
