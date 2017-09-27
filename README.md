@@ -20,7 +20,7 @@ Other things that are set up:
 To setup the entire environment you run:
 
 ```
-ansible-playbook mail.yml
+ansible-playbook main.yml
 ```
 
 To execute a certain role execute something like:
