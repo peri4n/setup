@@ -47,7 +47,6 @@ set sidebar_visible = yes
 set sidebar_width = 45
 # Pretty line-drawing character
 set sidebar_divider_char = ' │ '
-#
 # Pretty side bar:
 set sidebar_format = '%B%* %F:%N:%S'
 #
@@ -59,11 +58,36 @@ set sidebar_delim_chars="/"
 set sidebar_folder_indent
 # Indent with two spaces
 set sidebar_indent_string="  "
-#
-set pager_index_lines 	= 10 	# number of index lines to show
-set pager_context 		= 3     # number of context lines to show
-set pager_stop          = yes   # don't go to next message automatically
-#
+
+# Basic Options --------------------------------------
+# Read/new is good enough for me
+unset mark_old
+# bell on new mails
+set beep_new
+
+# Status Bar -----------------------------------------
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+# Compose View Options -------------------------------
+set realname = "Fabian Bull"          # who am i?
+set envelope_from                    # which from?
+set sig_dashes                       # dashes before sig
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set askcc                            # ask for CC:
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote
+
+
+# Side Bar Options -------------------------------
 # Color of the current, open, mailbox
 # Note: This is a general Mutt option which colors all selected items.
 color indicator brightcolor16 black
@@ -96,6 +120,16 @@ set sort_aux = reverse-last-date-received  # like gmail
 set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Pager View Options
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+set pager_index_lines 	= 15 	# number of index lines to show
+set pager_context 		= 3     # number of context lines to show
+set pager_stop          = yes   # don't go to next message automatically
+
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 
 # Index Key Bindings ---------------------------------
 bind index g        noop
