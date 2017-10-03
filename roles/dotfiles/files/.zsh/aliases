@@ -19,7 +19,6 @@ alias -g C='| pbcopy'
 alias -g G='| grep'
 
 # git
-alias git=hub
 alias g=git
 alias ga='git add'
 alias gaa='git add --all'

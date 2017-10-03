@@ -1,4 +1,9 @@
 ---
+- name: Create config dir
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+
 - name: Link newsbeuter config file
   file:
     path: "{{ ansible_env.HOME }}/.config/newsbeuter"

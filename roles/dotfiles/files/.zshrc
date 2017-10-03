@@ -37,8 +37,8 @@ SAVEHIST=100000 # max number of lines in the history file
 
 source $HOME/.zsh/exports
 source $HOME/.zsh/aliases
-source $HOME/.zsh/shims
 source $HOME/.zsh/functions
+for f in ~/.zsh/shims/*.sh; do source $f; done
 
 # Enable syntax highlighting
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
