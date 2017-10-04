@@ -19,6 +19,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 
 " language specific
+Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'neovimhaskell/haskell-vim'
