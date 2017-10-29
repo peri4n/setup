@@ -7,5 +7,12 @@
 [core]
     excludesfile = /Users/fbull/.gitignore_global
     editor = nvim
+	autocrlf = input
 [commit]
     gpgsign = true
+[color]
+    ui = true
+[branch]
+	autosetuprebase = always
+[rerere]
+	enabled = true
