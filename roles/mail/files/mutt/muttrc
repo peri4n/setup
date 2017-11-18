@@ -16,28 +16,6 @@ unset record
 
 source ~/.mutt/gpg.rc
 
-# Account Settings -----------------------------------
-
-# Default inbox.
-set spoolfile = "+bull_fabian_gmail/INBOX"
-
-# Alternate email addresses.
-#alternates sjl@pculture.org still\.?life@gmail.com steve@ladyluckblues.com steve@pculture.org
-
-# Mailboxes to show in the sidebar.
-mailboxes +bull_fabian_gmail \
-          +bull_fabian_gmail/INBOX \
-          +bull_fabian_gmail/archive \
-          +fabian_bull_datameer \
-          +fabian_bull_datameer/INBOX \
-          +fabian_bull_datameer/archive \
-          +fabian_bull_bioinformat \
-          +fabian_bull_bioinformat/INBOX \
-          +fabian_bull_bioinformat/Archive \
-          +spam_bioinformat \
-          +spam_bioinformat/INBOX \
-          +spam_bioinformat/Archive
-
 set mail_check_stats
 
 # Side Bar View Options ---------------------------------
@@ -117,6 +95,7 @@ set date_format = "%m/%d/%y"
 set index_format = "[%Z]  %D  %-20.20F  %s"
 set sort = threads                         # like gmail
 set sort_aux = reverse-last-date-received  # like gmail
+set sort_browser = desc
 set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
@@ -127,7 +106,6 @@ unset markers              # no ugly plus signs
 set pager_index_lines 	= 15 	# number of index lines to show
 set pager_context 		= 3     # number of context lines to show
 set pager_stop          = yes   # don't go to next message automatically
-
 
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 
@@ -161,5 +139,25 @@ macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 
 folder-hook . "push <collapse-all>\n"
 
-# set virtual_spoolfile=yes
-#virtual-mailboxes "JIRA" "notmuch://?query=tag:jira"
+# sidebar
+set sidebar_width   = 20
+set sidebar_visible = no 
+
+macro index c "<change-vfolder>?" "Change to vfolder overview"
+
+set virtual_spoolfile=yes
+
+virtual-mailboxes   \
+                    "Datameer - Inbox" "notmuch://?query=tag:inbox to:fabian.bull@datameer.com" \
+                    "Datameer - Github" "notmuch://?query=from:notifications@github.com to:fabian.bull@datameer.com" \
+                    "Datameer - JIRA" "notmuch://?query=from:r2d2@datameer.com subject:[JIRA]" \
+                    "Datameer - Confluence" "notmuch://?query=from:r2d2@datameer.com subject:[confluence]" \
+                    "Datameer - Archive" "notmuch://?query=to:fabian.bull@datameer.com" \
+                    "Gmail - Archive" "notmuch://?query=to:bull.fabian@googlemail.com" \
+                    "Gmail - Inbox" "notmuch://?query=tag:inbox to:bull.fabian@googlemail.com"
+
+# notmuch bindings
+macro index \\\\ "<vfolder-from-query>"                          # looks up a hand made query
+macro index A "<modify-labels>+archive -unread -inbox\\n"        # tag as Archived
+macro index I "<modify-labels>-inbox -unread\\n"                 # removed from inbox
+macro index S "<modify-labels-then-hide>-inbox -unread +junk\\n" # tag as Junk mail
