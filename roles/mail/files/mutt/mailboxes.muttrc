@@ -1,0 +1,9 @@
+virtual-mailboxes   \
+                    "Datameer - Inbox" "notmuch://?query=tag:inbox to:fabian.bull@datameer.com" \
+                    "Datameer - Github" "notmuch://?query=from:notifications@github.com to:fabian.bull@datameer.com" \
+                    "Datameer - JIRA" "notmuch://?query=from:r2d2@datameer.com subject:[JIRA]" \
+                    "Datameer - Confluence" "notmuch://?query=from:r2d2@datameer.com subject:[confluence]" \
+                    "Datameer - Archive" "notmuch://?query=to:fabian.bull@datameer.com" \
+                    "Gmail - Archive" "notmuch://?query=to:bull.fabian@googlemail.com" \
+                    "Gmail - Inbox" "notmuch://?query=tag:inbox to:bull.fabian@googlemail.com"
+
