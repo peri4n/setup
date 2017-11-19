@@ -54,7 +54,7 @@ set date_format = "%m/%d/%y"
 set index_format = "[%Z]  %D  %-20.20F  %s"
 set sort = threads                         # like gmail
 set sort_aux = reverse-last-date-received  # like gmail
-set sort_browser = desc
+set sort_browser = unsorted
 set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
@@ -81,4 +81,5 @@ set pgp_sign_as      = 20EF50ABC7858B9C
 folder-hook . "push <collapse-all>\n"
 
 set virtual_spoolfile=yes
+set vfolder_format = "%2C %?n?%4n /&     ?%6m %f"
 
