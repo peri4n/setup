@@ -3,16 +3,3 @@
 mcd () {
     mkdir "$1" && cd "$1"
 }
-
-function ssh() {
-  emulate -L zsh
-
-  if [[ -z "$@" ]]; then
-    local LOCAL_TERM=$(echo -n "$TERM" | sed -e s/tmux/screen/)
-    env TERM=$LOCAL_TERM command ssh uberspace
-  else
-    local LOCAL_TERM=$(echo -n "$TERM" | sed -e s/tmux/screen/)
-    env TERM=$LOCAL_TERM command ssh "$@"
-  fi
-}
-
