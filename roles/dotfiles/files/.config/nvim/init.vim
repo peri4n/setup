@@ -133,6 +133,9 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>ff :FZF<cr>
 nnoremap <leader>fa :Ag<cr>
 
+noremap <C-n> :bn<cr>
+noremap <C-p> :bp<cr>
+
 iabbrev @@ fabian.bull@bioinform.at
 iabbrev waht what
 iabbrev tehn then

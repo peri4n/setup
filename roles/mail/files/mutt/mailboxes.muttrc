@@ -1,0 +1,17 @@
+virtual-mailboxes   \
+                    "Datameer - Inbox" "notmuch://?query=tag:inbox to:fabian.bull@datameer.com" \
+                    "Datameer - Github" "notmuch://?query=from:notifications@github.com to:fabian.bull@datameer.com" \
+                    "Datameer - JIRA" "notmuch://?query=from:r2d2@datameer.com subject:[JIRA]" \
+                    "Datameer - Confluence" "notmuch://?query=from:r2d2@datameer.com subject:[confluence]" \
+                    "Datameer - Archive" "notmuch://?query=to:fabian.bull@datameer.com" \
+                    "Gmail - Inbox" "notmuch://?query=tag:inbox to:bull.fabian@googlemail.com" \
+                    "Gmail - Archive" "notmuch://?query=to:bull.fabian@googlemail.com" \
+                    "Private - Inbox" "notmuch://?query=tag:inbox to:fabian.bull@bioinform.at" \
+                    "Private - Archive" "notmuch://?query=to:fabian.bull@bioinform.at" \
+                    "Spam - Inbox" "notmuch://?query=tag:inbox to:spam@bioinform.at" \
+                    "Spam - Archive" "notmuch://?query=to:spam@bioinform.at" \
+                    "Uberspace - Inbox" "notmuch://?query=tag:inbox to:peri4n@nunki.uberspace.de" \
+                    "Uberspace - Archive" "notmuch://?query=to:peri4n@nunki.uberspace.de" \
+                    "Uni - Inbox" "notmuch://?query=tag:inbox to:fabian.bull@informatik.uni-halle.de" \
+                    "Uni - Archive" "notmuch://?query=to:fabian.bull@informatik.uni-halle.de"
+
