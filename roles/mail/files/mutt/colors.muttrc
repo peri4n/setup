@@ -1,7 +1,0 @@
-
-color indicator brightred black
- 
-color hdrdefault white black  # headers white on black
-color header brightgreen black ^From:  # sender's name in green
-color quoted cyan black  # quoted text in blue
-color signature red black   # signature in red
