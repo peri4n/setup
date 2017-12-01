@@ -7,7 +7,7 @@ maxsyncaccounts = 4
 sslcacertfile = /etc/ssl/cert.pem
 ssl = yes
 realdelete = no
-postsynchook = notmuch new
+postsynchook = ~/.scripts/notmuch-tagging.sh
 
 [Account Gmail]
 localrepository = GmailLocal

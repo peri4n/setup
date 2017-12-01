@@ -1,11 +1,5 @@
 ---
 
-- name: Link mutt configuration files
-  file:
-    src: "{{ role_path }}/files/mutt"
-    dest: "{{ ansible_env.HOME }}/.mutt"
-    state: link
-
 - name: Create XDG config directory
   file:
     path: "{{ ansible_env.HOME }}/.config/"
@@ -24,3 +18,15 @@
     state: link
   with_items:
     - .msmtprc
+
+- name: Create scripts directory
+  file:
+    path: "{{ ansible_env.HOME }}/.scripts/"
+    state: directory
+
+- name: Link notmuch taggint script
+  file:
+    src: "{{ role_path }}/files/notmuch-tagging.sh"
+    dest: "{{ ansible_env.HOME }}/.scripts/notmuch-tagging.sh"
+    state: link
+    mode: 0755
