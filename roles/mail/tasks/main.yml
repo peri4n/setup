@@ -18,6 +18,7 @@
     state: link
   with_items:
     - .msmtprc
+    - .notmuch-config
 
 - name: Create scripts directory
   file:
