@@ -3,7 +3,7 @@ echo "Tagging new mail"
 notmuch new
 
 # Remove orca emails from inbox
-notmuch tag -inbox -- to:orca-team@datameer.com and topic:JIRA
+notmuch tag -inbox -- to:orca-team@datameer.com and subject:JIRA
 
 # tag all messages from "me" as sent and remove tags inbox and unread
 notmuch tag -inbox +sent -- '(from:fabian.bull@datameer.com \
