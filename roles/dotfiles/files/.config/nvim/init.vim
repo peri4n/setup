@@ -16,7 +16,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
+Plug 'plasticboy/vim-markdown'
 
 " language specific
 Plug 'alvan/vim-closetag'
