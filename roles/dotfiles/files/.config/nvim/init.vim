@@ -16,7 +16,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'xolox/vim-misc'
-Plug 'plasticboy/vim-markdown'
+Plug 'gabrielelana/vim-markdown'
 
 " language specific
 Plug 'alvan/vim-closetag'
@@ -100,9 +100,6 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='base16'
 set laststatus=2
-
-" vim-notes options
-:let g:notes_directories = ['~/docs/notes']
 
 " ansible options
 let g:ansible_options = {'ignore_blank_lines': 0}
