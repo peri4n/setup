@@ -17,6 +17,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'xolox/vim-misc'
 Plug 'gabrielelana/vim-markdown'
+Plug 'junegunn/goyo.vim'
 
 " language specific
 Plug 'alvan/vim-closetag'
