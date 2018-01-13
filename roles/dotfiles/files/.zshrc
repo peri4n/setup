@@ -47,11 +47,6 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # SHIMS
 
 eval "$(fasd --init posix-alias zsh-hook)"
-#
-# base 16 color theme
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-base16_default-dark
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -36,8 +36,8 @@ scriptencoding utf-8
 
 filetype plugin on " enable filetype specific settings
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-set t_Co=256
+"let base16colorspace=256  " Access colors present in 256 colorspace
+"set t_Co=256
 
 colorscheme base16-tomorrow-night
 
@@ -113,8 +113,6 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
 endif
-
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore build -g ""'
 
 " MAPPINGS
 
