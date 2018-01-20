@@ -13,11 +13,12 @@ precmd() {
     vcs_info
 }
 
-setopt PROMPT_SUBST # enable command substitution in the prompt
-setopt AUTO_CD # enable directory switching without 'cd'
-setopt APPEND_HISTORY # append instead of replacing the history file
-setopt INC_APPEND_HISTORY # immediately append to the history file
-setopt SHARE_HISTORY # share history between different zsh sessions
+setopt PROMPT_SUBST         # enable command substitution in the prompt
+setopt AUTO_CD              # enable directory switching without 'cd'
+setopt APPEND_HISTORY       # append instead of replacing the history file
+setopt INC_APPEND_HISTORY   # immediately append to the history file
+setopt SHARE_HISTORY        # share history between different zsh sessions
+setopt NULLGLOB             # if a glob does not match delete it as an argument
 
 bindkey -e
 
@@ -38,11 +39,15 @@ SAVEHIST=100000 # max number of lines in the history file
 source $HOME/.zsh/exports
 source $HOME/.zsh/aliases
 source $HOME/.zsh/functions
-for f in ~/.zsh/shims/*.sh; do source $f; done
+if [ -d ~/.zsh/shims ]; then
+    for f in $HOME/.zsh/shims/*.sh; do source $f; done
+fi
 
 # Enable syntax highlighting
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -d $HOME/.zsh/zsh-syntax-highlighting ] && source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Enable autosuggestions
+[ -d $HOME/.zsh/zsh-autosuggestion ] && source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # SHIMS
 
