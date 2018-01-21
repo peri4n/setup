@@ -12,4 +12,13 @@
     src: "{{ role_path }}/files/ruby.sh"
     state: link
 
+- name: Make rbenv plugin folder
+  file: 
+    path: "{{ role_path }}/files/rbenv/plugins"
+    state: directory
 
+- name: Link rbenv plugin ruby-build
+  file:
+    path: "{{ role_path }}/files/rbenv/plugins/ruby-build"
+    src: "{{ role_path }}/files/ruby-build"
+    state: link
