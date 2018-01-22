@@ -118,7 +118,6 @@ scriptencoding utf-8
 filetype plugin on              " Enable filetype specific settings
 filetype indent on
 
-let base16colorspace=256
 colorscheme base16-tomorrow-night
 
 set clipboard+=unnamedplus " use onlye a single clipboard
