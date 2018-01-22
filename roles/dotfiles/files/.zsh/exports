@@ -6,8 +6,11 @@ export LANGUAGE=en_US.UTF-8
 export EDITOR=nvim
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
-# Add stack binaries
+# Set Gradle home
+export GRADLE_USER_HOME=$HOME/.gradle
+
+# Add Stack binaries
 export PATH="$HOME/.local/bin:$PATH"
 
-# Set neo vim as man pager
+# Set NeoVim as man pager
 export MANPAGER="nvim -c 'set ft=man' -" 
