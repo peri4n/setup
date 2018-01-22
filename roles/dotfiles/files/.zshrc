@@ -1,7 +1,12 @@
 autoload -U promptinit && promptinit # initialize the prompt system promptinit
 autoload -U compinit && compinit
 autoload -Uz vcs_info
+autoload -U edit-command-line
 
+# ================ ZLE ====================
+zle -N edit-command-line
+
+# ================ Styles ====================
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*:*' get-revision true
 zstyle ':vcs_info:git*:*' check-for-changes true
@@ -13,6 +18,7 @@ precmd() {
     vcs_info
 }
 
+# ================ Options ====================
 setopt PROMPT_SUBST         # enable command substitution in the prompt
 setopt AUTO_CD              # enable directory switching without 'cd'
 setopt APPEND_HISTORY       # append instead of replacing the history file
@@ -20,14 +26,19 @@ setopt INC_APPEND_HISTORY   # immediately append to the history file
 setopt SHARE_HISTORY        # share history between different zsh sessions
 setopt NULLGLOB             # if a glob does not match delete it as an argument
 
+# ================ Key Bindings ====================
 bindkey -e
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
+# ================ Prompt ====================
 PROMPT='%F{cyan}%n%f %# ' # user name
 PROMPT=$PROMPT'%F{yellow}%m%f ' # host machine
 PROMPT=$PROMPT'%2c' # two directories up
 PROMPT=$PROMPT' ${vcs_info_msg_0_}
 \x -> '
 
+# ================ Variables ====================
 RPROMPT='%F{cyan}%h%f'
 
 HISTFILE=$HOME/.zsh_history # file to write the history to
