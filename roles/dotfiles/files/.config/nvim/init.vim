@@ -1,3 +1,9 @@
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" ================ Plugin Config ====================
+
 call plug#begin('~/.config/nvim/plugged')
 " colorschemes
 Plug 'chriskempson/base16-vim'
@@ -32,46 +38,92 @@ Plug 'chase/vim-ansible-yaml'
 
 call plug#end()
 
-scriptencoding utf-8
+" ================ General Config ====================
 
-filetype plugin on " enable filetype specific settings
+set number                      " Show line numbers
+set relativenumber              " Center line number around current line
+set history=1000                " Store lots of :cmdline history
+set showcmd                     " Show incomplete cmds down the bottom
+set showmode                    " Show current mode down the bottom
+set visualbell                  " No sounds
+set autoread                    " Reload files changed outside vim
+set hidden                      " Switch buffers without saving them
+set showmatch                   " Show matching braces
+set autoread                    " Reread file content if file was changed outside of vim
+set cursorline                  " Highlight current line
+syntax on                       " Turn on syntax highlighting
 
-"let base16colorspace=256  " Access colors present in 256 colorspace
-"set t_Co=256
+" ================ Turn Off Swap Files ==============
 
-colorscheme base16-tomorrow-night
+set noswapfile                  " Do not create swap files
+set nobackup                    " Do not leave backup files
+set wb                          " Make backup before writing a file
 
-set hidden " enable hidden buffers
+" ================ Indentation ======================
 
-set number " show line numbers
+set expandtab                   " Use spaces instead of tabs
+set tabstop=4                   " Use 4 spaces
+set shiftwidth=4                " Use 4 spaces for indentation
+set softtabstop=4               " Just so that indenting behaves sane
+set smartindent                 " Auto indenting when adding new line
 
-set relativenumber " center line number around current line
+set nowrap                      " Don't wrap lines
+set linebreak                   " Wrap lines at convenient points
 
-set showmatch " show matching braces
+" ================ Folds ============================
 
-set expandtab " use spaces instead of tabs
+set foldmethod=indent            " Fold based on indent
+set foldnestmax=3                " Deepest fold is 3 levels
+set nofoldenable                 " vont fold by default<Paste>
 
-set tabstop=4 " use 4 spaces
+" ================ Search ===========================
 
-set shiftwidth=4 " use 4 spaces for indentation
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " Unless we type a capital
 
-set softtabstop=4 " just so that indenting behaves sane
+" ================ Mappings =========================
 
-set smartindent " auto indenting when adding new line
+no <down> <Nop>
+no <up> <Nop>
+no <left> <Nop>
+no <right> <Nop>
 
-set showcmd " show incomplete commands
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
-set clipboard+=unnamedplus " use onlye a single clipboard
+nnoremap <leader>n :NERDTreeToggle<cr>
 
-set tags=./tags,tags;
+nnoremap <leader>ff :FZF<cr>
+nnoremap <leader>fa :Ag<cr>
 
-set autoread "reread file content if file was changed outside of vim
+noremap <C-n> :bn<cr>
+noremap <C-p> :bp<cr>
 
-" Abbreviations
+" ================ Abbreviations =======================
+
 abbr funciton function
 abbr teh the
 abbr tempalte template
 abbr fitler filter
+
+iabbrev @@ fabian.bull@bioinform.at
+iabbrev waht what
+iabbrev tehn then
+iabbrev adn and
+
+scriptencoding utf-8
+
+filetype plugin on              " Enable filetype specific settings
+filetype indent on
+
+let base16colorspace=256
+colorscheme base16-tomorrow-night
+
+set clipboard+=unnamedplus " use onlye a single clipboard
+
+set tags=./tags,tags;
 
 " set a map leader for more key combos
 let mapleader = ','
@@ -80,9 +132,7 @@ let g:mapleader = ','
 set invlist " toggle invisible characters
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,space:·,eol:¬
 
-set showbreak=↪ " show at the beginning of a wrapped line
-
-set cursorline " highlight current line
+set showbreak=↪             " show at the beginning of a wrapped line
 
 " neosnippet
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -105,37 +155,12 @@ set laststatus=2
 " ansible options
 let g:ansible_options = {'ignore_blank_lines': 0}
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
 endif
 
-" MAPPINGS
-
-no <down> <Nop>
-no <up> <Nop>
-no <left> <Nop>
-no <right> <Nop>
-
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-nnoremap <leader>n :NERDTreeToggle<cr>
-
-nnoremap <leader>ff :FZF<cr>
-nnoremap <leader>fa :Ag<cr>
-
-noremap <C-n> :bn<cr>
-noremap <C-p> :bp<cr>
-
-iabbrev @@ fabian.bull@bioinform.at
-iabbrev waht what
-iabbrev tehn then
-iabbrev adn and
 
 " Reread buffer when the file is changed in an other editor
 au FocusGained,BufEnter * checktime
