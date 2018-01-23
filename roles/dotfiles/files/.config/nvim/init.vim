@@ -118,7 +118,11 @@ scriptencoding utf-8
 filetype plugin on              " Enable filetype specific settings
 filetype indent on
 
-colorscheme base16-tomorrow-night
+"colorscheme base16-tomorrow-night
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 set clipboard+=unnamedplus " use onlye a single clipboard
 

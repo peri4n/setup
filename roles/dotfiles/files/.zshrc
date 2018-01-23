@@ -47,6 +47,11 @@ HISTSIZE=1000 # max number of commands written to history per session
 
 SAVEHIST=100000 # max number of lines in the history file
 
+# Set color scheme
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)" && eval
+base16_tomorrow-night
+
 source $HOME/.zsh/exports
 source $HOME/.zsh/aliases
 source $HOME/.zsh/functions
