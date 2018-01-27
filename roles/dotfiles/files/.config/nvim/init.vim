@@ -85,6 +85,9 @@ set smartcase       " Unless we type a capital
 
 " ================ Mappings =========================
 
+let mapleader = ','
+let g:mapleader = ','
+
 no <down> <Nop>
 no <up> <Nop>
 no <left> <Nop>
@@ -129,8 +132,6 @@ set clipboard+=unnamedplus " use onlye a single clipboard
 set tags=./tags,tags;
 
 " set a map leader for more key combos
-let mapleader = ','
-let g:mapleader = ','
 
 set invlist " toggle invisible characters
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,space:·,eol:¬
