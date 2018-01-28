@@ -14,12 +14,17 @@ myConfig = defaultConfig {
   , terminal           = "urxvt"
   , normalBorderColor  = "#cccccc"
   , focusedBorderColor = "#1e90ff"
-  , focusFollowsMouse  = False
+  , focusFollowsMouse  = myFocusFollowsMouse
+  , clickJustFocuses   = myClickJustFocuses
   , startupHook        = setWMName "LG3D"
   , workspaces         = myWorkspaces
   , manageHook         = manageDocks <+> myManageHook <+> manageHook defaultConfig
   , layoutHook         = avoidStruts  $ myLayout
     }
+
+myClickJustFocuses = False
+
+myFocusFollowsMouse = False
 
 myWorkspaces :: [String]
 myWorkspaces = ["Web", "Dev", "Chat", "Mail"]
