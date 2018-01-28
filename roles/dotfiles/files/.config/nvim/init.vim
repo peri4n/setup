@@ -2,6 +2,9 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+filetype plugin on              " Enable filetype specific settings
+filetype indent on
+
 " ================ Plugin Config ====================
 
 call plug#begin('~/.config/nvim/plugged')
@@ -70,18 +73,25 @@ set smartindent                 " Auto indenting when adding new line
 set nowrap                      " Don't wrap lines
 set linebreak                   " Wrap lines at convenient points
 
+" ================ Invisible characters =============
+
+set invlist                     " toggle invisible characters
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,space:·,eol:¬
+
+set showbreak=↪                 " show at the beginning of a wrapped line
+
 " ================ Folds ============================
 
-set foldmethod=indent            " Fold based on indent
-set foldnestmax=3                " Deepest fold is 3 levels
-set nofoldenable                 " vont fold by default<Paste>
+set foldmethod=indent           " Fold based on indent
+set foldnestmax=3               " Deepest fold is 3 levels
+set nofoldenable                " vont fold by default<Paste>
 
 " ================ Search ===========================
 
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " Unless we type a capital
+set incsearch                   " Find the next match as we type the search
+set hlsearch                    " Highlight searches by default
+set ignorecase                  " Ignore case when searching...
+set smartcase                   " Unless we type a capital
 
 " ================ Mappings =========================
 
@@ -104,7 +114,7 @@ nnoremap <leader>fa :Ag<cr>
 noremap <C-n> :bn<cr>
 noremap <C-p> :bp<cr>
 
-" ================ Abbreviations =======================
+" ================ Abbreviations ===================
 
 abbr funciton function
 abbr teh the
@@ -118,10 +128,8 @@ iabbrev adn and
 
 scriptencoding utf-8
 
-filetype plugin on              " Enable filetype specific settings
-filetype indent on
+" ================ Color scheme ====================
 
-"colorscheme base16-tomorrow-night
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -131,40 +139,11 @@ set clipboard+=unnamedplus " use onlye a single clipboard
 
 set tags=./tags,tags;
 
-" set a map leader for more key combos
-
-set invlist " toggle invisible characters
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,space:·,eol:¬
-
-set showbreak=↪             " show at the beginning of a wrapped line
-
-" neosnippet
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" rainbow paranthesis options
-let g:rainbow_active = 1
-
-" airline options
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline_symbols_ascii = 1
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_theme='base16'
-set laststatus=2
-
-" ansible options
-let g:ansible_options = {'ignore_blank_lines': 0}
-
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
 endif
-
 
 " Reread buffer when the file is changed in an other editor
 au FocusGained,BufEnter * checktime
