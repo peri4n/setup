@@ -9,10 +9,15 @@ prefer_plaintext = True
         address = fabian.bull@datameer.com
         sendmail_command = msmtp --account=datameer -t
 
-    [[private]]
+    [[google]]
         realname = Fabian Bull
         address = bull.fabian@googlemail.com
         sendmail_command = msmtp --account=bullfabian -t
+
+    [[private]]
+        realname = Fabian Bull
+        address = fabian.bull@bioinform.at
+        sendmail_command = msmtp --account=fabianbull -t
 
 [bindings]
   [[search]]

@@ -31,7 +31,7 @@
     attachment = '','','yellow,bold','black','yellow,bold','black'
     attachment_focus = 'standout','','black','yellow','black','yellow'
     body = '','','light gray','black','light gray','black'
-    body_focus = '','','light gray','black','light gray','dark gray'
+    body_focus = '','','light gray','black','light gray','black'
     header = '','','dark cyan','black','dark cyan','black'
     header_key = '','','yellow','black','yellow','black'
     header_value = '','','yellow','black','yellow','black'
