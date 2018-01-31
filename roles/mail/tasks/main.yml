@@ -7,9 +7,12 @@
 
 - name: Link offlineimap configuration files
   file:
-    src: "{{ role_path }}/files/offlineimap"
-    dest: "{{ ansible_env.HOME }}/.config/offlineimap"
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/{{ item }}"
     state: link
+  with_items:
+    - offlineimap
+    - alot
 
 - name: Link remaining configuration files
   file:
