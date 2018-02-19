@@ -2,12 +2,13 @@ import XMonad
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
-import XMonad.Util.Run(spawnPipe)
-import XMonad.Layout.Maximize
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
+import XMonad.Layout.Maximize
+import XMonad.Prompt.Pass
+import XMonad.Util.Run(spawnPipe)
 
 main = xmonad =<< xmobar myConfig
 
@@ -17,10 +18,11 @@ myConfig = ewmh def {
   , terminal           = "urxvt"
   , normalBorderColor  = "#cccccc"
   , focusedBorderColor = "#1e90ff"
+  , keys = myKeys
   , focusFollowsMouse  = myFocusFollowsMouse
   , clickJustFocuses   = myClickJustFocuses
   , workspaces         = myWorkspaces
-  , manageHook         = manageDocks <+> myManageHook <+> manageHook defaultConfig
+  , manageHook         = manageDocks <+> myManageHook <+> manageHook def
   , layoutHook         = avoidStruts  $ myLayout
     }
 
@@ -52,6 +54,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf) -- %! Launch terminal
     , ((modMask,               xK_p     ), spawn "rofi -show run") -- %! Launch dmenu
+    , ((modMask,               xK_w     ), spawn "rofi -show window") -- %! Launch dmenu
     , ((modMask .|. shiftMask, xK_c     ), kill) -- %! Close the focused window
 
     , ((modMask,               xK_space ), sendMessage NextLayout) -- %! Rotate through the available layout algorithms
@@ -85,6 +88,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- quit, or restart
     , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess)) -- %! Quit xmonad
     , ((modMask              , xK_q     ), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi") -- %! Restart xmonad
+
+    -- pass integration
+    , ((modMask, xK_y)                              , passPrompt def)
 
     ]
     ++
