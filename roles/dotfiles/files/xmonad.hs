@@ -5,12 +5,13 @@ import System.Exit
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Layout.Maximize
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 
 main = xmonad =<< xmobar myConfig
 
-myConfig = defaultConfig {
+myConfig = ewmh def {
     modMask = mod4Mask
   , borderWidth        = 1
   , terminal           = "urxvt"
