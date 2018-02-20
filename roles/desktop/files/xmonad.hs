@@ -23,7 +23,8 @@ myConfig = ewmh def {
   , clickJustFocuses   = myClickJustFocuses
   , workspaces         = myWorkspaces
   , manageHook         = manageDocks <+> myManageHook <+> manageHook def
-  , layoutHook         = avoidStruts  $ myLayout
+  , logHook            = dynamicLogWithPP xmobarPP
+  , layoutHook         = avoidStruts  myLayout
     }
 
 -- Click is passed through when clicked on an inactive window
