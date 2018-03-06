@@ -31,3 +31,8 @@ uda.estimate.label=Est
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-dark-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
+taskd.certificate=\/home\/fabian\/.task\/fabian_bull.cert.pem
+taskd.key=\/home\/fabian\/.task\/fabian_bull.key.pem
+taskd.ca=\/home\/fabian\/.task\/ca.cert.pem
+taskd.server=nunki.uberspace.de:65268
+taskd.credentials=Public\/Fabian Bull\/672a0d3a-791f-444c-ab50-1d26020dbd7b
