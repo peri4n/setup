@@ -38,6 +38,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'gisphm/vim-gradle'
 Plug 'chase/vim-ansible-yaml'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
