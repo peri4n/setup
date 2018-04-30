@@ -1,26 +1,11 @@
-https://www.heise.de/tp/news-atom.xml
-https://www.heise.de/developer/rss/news-atom.xml
-https://heise.de/developer/rss/babel-bulletin-blog-atom.xml
-https://heise.de/developer/rss/world-of-it-blog-atom.xml
-https://heise.de/developer/rss/Tales-from-the-Web-side/blog-atom.xml
-https://heise.de/developer/rss/next-big-thing-blog-atom.xml
-https://heise.de/developer/rss/neuigkeiten-von-der-insel-blog-atom.xml
-https://heise.de/developer/rss/continuous-architecture-blog-atom.xml
-https://heise.de/developer/rss/ueberkreuz-blog-atom.xml society
-
-http://www.nachdenkseiten.de/?feed=atom society
-
-https://news.ycombinator.com/rss
-https://dev.to/feed
+https://blog.jetbrains.com/feed/
+https://www.lightbend.com/blog/rss.xml
+https://blog.docker.com/feed/
 
 # podcasts
-http://feeds.soundcloud.com/users/soundcloud:users:100369928/sounds.rss scala,fp,se
 http://scalawags.tv/rss scala,fp,se
 http://scalaprofis.de/feed/m4a/ scala,fp,se
 
-https://feeds.metaebene.me/freakshow/mp3 nerd,metaebene
-http://logbuch-netzpolitik.de/feed/m4a nerd,metaebene
-http://feeds.feedburner.com/cre-podcast nerd,metaebene
 http://chaosradio.ccc.de/chaosradio-latest.rss nerd,metaebene
 https://requestforcomments.de/feed/m4a nerd
 
@@ -28,12 +13,3 @@ http://typetheorypodcast.com/feed/podcast/ fp,se
 http://www.haskellcast.com/feed.xml fp,se
 https://www.functionalgeekery.com/feed/mp3/ fp,se
 https://simplecast.com/podcasts/1232/rss fp,se
-
-http://javapubhouse.libsyn.com/rss java,se
-
-http://feeds.feedburner.com/se-radio se
-https://www.heise.de/developer/rss/podcast-softwarearchitektour.rss se
-
-http://alternativlos.org/alternativlos.rss society
-https://aufwachen-podcast.de/feed/itunes/ society
-https://www.kuechenstud.io/lagedernation/feed/aac/
