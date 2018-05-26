@@ -14,3 +14,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Set NeoVim as man pager
 export MANPAGER="nvim -c 'set ft=man' -" 
+
+# Set Jenkins Trigger Utils
+export PATH="$HOME/dev/work/mola/jenkins-trigger-util/src/:$PATH"
