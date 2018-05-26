@@ -8,6 +8,11 @@ alias mkdir='mkdir -pv'
 alias o='open'
 alias e='exit'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .... ='cd ../../..'
+alias ..... ='cd ../../../..'
+
 alias l='ls -lGh'
 alias ll='ls -alGh'
 
