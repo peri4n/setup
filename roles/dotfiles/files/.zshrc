@@ -80,11 +80,16 @@ fi
 
 zplug "lukechilds/zsh-nvm"
 
+zplug "junegunn/fzf-bin", \
+    as:command, \
+    from:gh-r, \
+    rename-to:fzf
+
 zplug "zsh-users/zsh-syntax-highlighting", \
-  defer:2
+    defer:2
 
 zplug "zsh-users/zsh-autosuggestions", \
-  defer:2
+    defer:2
 
 zplug load
 
@@ -92,7 +97,6 @@ zplug load
 
 eval "$(fasd --init posix-alias zsh-hook)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GPG_TTY=$(tty)
 
