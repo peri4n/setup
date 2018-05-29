@@ -75,12 +75,35 @@ if [ -d ~/.zsh/shims ]; then
     for f in $HOME/.zsh/shims/*.sh; do source $f; done
 fi
 
-# Enable zplug
+# ================ Plugins ====================
 [ -d $HOME/.zsh/zplug/ ] && source $HOME/.zsh/zplug/init.zsh
 
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
+# ==== Util
+
+zplug "b4b4r07/enhancd", \
+    use:init.sh
+
+if zplug check "b4b4r07/enhancd"; then
+    export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
+    export ENHANCD_DOT_SHOW_FULLPATH=1
+fi
+
+# ==== Zsh
+
 zplug "lukechilds/zsh-nvm"
+
+zplug "zsh-users/zsh-syntax-highlighting", \
+    defer:2
+
+zplug "zsh-users/zsh-autosuggestions", \
+    defer:2
+
+#zplug "Tarrasch/zsh-bd", \
+#    use:bd.zsh
+
+# ==== Binaries
 
 zplug "ggreer/the_silver_searcher", \
     as:command, \
@@ -92,21 +115,10 @@ zplug "junegunn/fzf", \
     hook-build:"./install --bin", \
     use:"bin/{fzf-tmux,fzf}"
 
-zplug "junegunn/fzf", \
-    as:plugin, \
-    use:"shell/*.zsh"
-
-zplug "clvv/fasd", \
-    as:command, \
-    use:fasd
-
-zplug "zsh-users/zsh-syntax-highlighting", \
-    defer:2
-
-zplug "zsh-users/zsh-autosuggestions", \
-    defer:2
-
 zplug load
+
+source $ZPLUG_HOME/repos/junegunn/fzf/shell/completion.zsh
+source $ZPLUG_HOME/repos/junegunn/fzf/shell/key-bindings.zsh
 
 export GPG_TTY=$(tty)
 
