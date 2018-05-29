@@ -1,3 +1,6 @@
+# If profiling is needed
+#zmodload zsh/zprof
+
 autoload -U promptinit && promptinit # initialize the prompt system promptinit
 autoload -U compinit && compinit
 autoload -Uz vcs_info
@@ -79,3 +82,6 @@ eval "$(fasd --init posix-alias zsh-hook)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GPG_TTY=$(tty)
+
+# end profiling
+#zprof
