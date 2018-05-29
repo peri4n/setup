@@ -102,6 +102,9 @@ zplug "zsh-users/zsh-autosuggestions", \
 zplug "Tarrasch/zsh-bd", \
     use:bd.zsh
 
+zplug "plugins/git", \
+    from:oh-my-zsh
+
 # ==== Binaries
 
 zplug "ggreer/the_silver_searcher", \
