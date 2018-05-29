@@ -1,8 +1,6 @@
 # If profiling is needed
 #zmodload zsh/zprof
 
-autoload -U promptinit && promptinit # initialize the prompt system promptinit
-autoload -U compinit && compinit
 autoload -Uz vcs_info
 autoload -U edit-command-line
 
@@ -92,7 +90,8 @@ fi
 
 # ==== Zsh
 
-zplug "lukechilds/zsh-nvm"
+zplug "lukechilds/zsh-nvm", \
+    lazy:true
 
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
