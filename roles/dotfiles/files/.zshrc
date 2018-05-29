@@ -100,8 +100,8 @@ zplug "zsh-users/zsh-syntax-highlighting", \
 zplug "zsh-users/zsh-autosuggestions", \
     defer:2
 
-#zplug "Tarrasch/zsh-bd", \
-#    use:bd.zsh
+zplug "Tarrasch/zsh-bd", \
+    use:bd.zsh
 
 # ==== Binaries
 
