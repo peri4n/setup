@@ -59,11 +59,18 @@ if [ -d ~/.zsh/shims ]; then
     for f in $HOME/.zsh/shims/*.sh; do source $f; done
 fi
 
-# Enable syntax highlighting
-[ -d $HOME/.zsh/zsh-syntax-highlighting ] && source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Enable zplug
+[ -d $HOME/.zsh/zplug/ ] && source $HOME/.zsh/zplug/init.zsh
 
-# Enable autosuggestions
-[ -d $HOME/.zsh/zsh-autosuggestion ] && source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+zplug "lukechilds/zsh-nvm"
+
+zplug "zsh-users/zsh-syntax-highlighting", \
+  defer:2
+
+zplug "zsh-users/zsh-autosuggestions", \
+  defer:2
+
+zplug load
 
 # SHIMS
 
