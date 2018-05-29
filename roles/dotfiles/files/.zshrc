@@ -78,12 +78,27 @@ fi
 # Enable zplug
 [ -d $HOME/.zsh/zplug/ ] && source $HOME/.zsh/zplug/init.zsh
 
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
+
 zplug "lukechilds/zsh-nvm"
 
-zplug "junegunn/fzf-bin", \
+zplug "ggreer/the_silver_searcher", \
     as:command, \
-    from:gh-r, \
-    rename-to:fzf
+    hook-build:"make", \
+    use:ag
+
+zplug "junegunn/fzf", \
+    as:command, \
+    hook-build:"./install --bin", \
+    use:"bin/{fzf-tmux,fzf}"
+
+zplug "junegunn/fzf", \
+    as:plugin, \
+    use:"shell/*.zsh"
+
+zplug "clvv/fasd", \
+    as:command, \
+    use:fasd
 
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
@@ -92,11 +107,6 @@ zplug "zsh-users/zsh-autosuggestions", \
     defer:2
 
 zplug load
-
-# SHIMS
-
-eval "$(fasd --init posix-alias zsh-hook)"
-
 
 export GPG_TTY=$(tty)
 
