@@ -8,7 +8,7 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
 ! set the font
-URxvt*font: xft:inconsolata:size=10
+URxvt*font: xft:hasklig:size=10
 Xft*dpi: 96
 Xft*antialias: true
 
@@ -18,12 +18,27 @@ URxvt*scrollBar: false
 ! set border between text and border
 URxvt.internalBorder: 8
 
- URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
- URxvt.url-select.launcher:  firefox-developer-edition
- URxvt.url-select.underline: true
- URxvt.keysym.M-u:           perl:url-select:select_next
- URxvt.keysym.M-Escape:      perl:keyboard-select:activate
- URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  firefox-developer-edition
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+rofi.separator-style: solid
+rofi.sidebar-mode: true
+rofi.bw: 1
+rofi.columns: 1
+rofi.padding: 16
+
+rofi.yoffset: 20 
+rofi.fake-transparency: false
+rofi.location: 1
+rofi.width: 100 
+rofi.font: Hasklig 12
+rofi.lines: 15
+rofi.fixed-num-lines: true
 
 ! colorscheme
 #define base00 #1d1f21
