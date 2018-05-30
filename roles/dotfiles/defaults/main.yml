@@ -1,7 +1,6 @@
 ---
 dotfiles:
   - .config/nvim/init.vim
-  - .config/base16-shell
   - .gitconfig
   - .taskrc
   - .tmuxinator
