@@ -61,11 +61,6 @@ HISTFILE="$HOME/.zhistory"     # file to write the history to
 HISTSIZE=10000000              # max number of commands written to history per session
 SAVEHIST=10000000              # max number of lines in the history file
 
-# Set color scheme
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)" && eval
-base16_tomorrow-night
-
 source $HOME/.zsh/exports
 source $HOME/.zsh/aliases
 source $HOME/.zsh/functions
@@ -79,6 +74,10 @@ fi
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
 # ==== Util
+
+zplug "chriskempson/base16-shell", \
+    use:"scripts/base16-tomorrow-night.sh", \
+    defer:0
 
 zplug "b4b4r07/enhancd", \
     use:init.sh
@@ -109,7 +108,7 @@ zplug "Tarrasch/zsh-bd", \
 
 zplug "ggreer/the_silver_searcher", \
     as:command, \
-    hook-build:"make", \
+    hook-build:"./build.sh", \
     use:ag
 
 zplug "junegunn/fzf", \
