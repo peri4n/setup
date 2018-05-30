@@ -88,6 +88,9 @@ if zplug check "b4b4r07/enhancd"; then
     export ENHANCD_DOT_SHOW_FULLPATH=1
 fi
 
+zplug "plugins/git", \
+    from:oh-my-zsh
+
 # ==== Zsh
 
 zplug "lukechilds/zsh-nvm", \
@@ -101,9 +104,6 @@ zplug "zsh-users/zsh-autosuggestions", \
 
 zplug "Tarrasch/zsh-bd", \
     use:bd.zsh
-
-zplug "plugins/git", \
-    from:oh-my-zsh
 
 # ==== Binaries
 
