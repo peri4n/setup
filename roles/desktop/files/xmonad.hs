@@ -54,8 +54,8 @@ myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf) -- %! Launch terminal
-    , ((modMask,               xK_p     ), spawn "rofi -show run") -- %! Launch dmenu
-    , ((modMask,               xK_w     ), spawn "rofi -show window") -- %! Launch dmenu
+    , ((modMask,               xK_p     ), spawn "rofi -show run -location 1 -width 100 -yoffset 13") -- %! Launch dmenu
+    , ((modMask,               xK_w     ), spawn "rofi -show window -location 1 -width 100 -yoffset 13") -- %! Launch dmenu
     , ((modMask .|. shiftMask, xK_c     ), kill) -- %! Close the focused window
 
     , ((modMask,               xK_space ), sendMessage NextLayout) -- %! Rotate through the available layout algorithms
