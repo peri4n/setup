@@ -92,8 +92,7 @@ zplug "plugins/git", \
 
 # ==== Zsh
 
-zplug "lukechilds/zsh-nvm", \
-    lazy:true
+zplug "lukechilds/zsh-nvm"
 
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
