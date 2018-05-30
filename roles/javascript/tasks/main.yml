@@ -1,8 +1,0 @@
----
-
-- name: Install nvm shim
-  template:
-    dest: "{{ ansible_env.HOME }}/.zsh/shims/javascript.sh"
-    src: "{{ role_path }}/files/javascript.sh"
-
-
