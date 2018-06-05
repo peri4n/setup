@@ -2,6 +2,7 @@ import XMonad
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
+import System.IO
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
@@ -10,9 +11,9 @@ import XMonad.Layout.Maximize
 import XMonad.Prompt.Pass
 import XMonad.Util.Run(spawnPipe)
 
-main = xmonad =<< xmobar myConfig
-
-myConfig = ewmh def {
+main = do
+    xmbProc <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc"
+    xmonad $ ewmh def {
     modMask = mod4Mask
   , borderWidth        = 1
   , terminal           = "urxvt"
@@ -22,8 +23,13 @@ myConfig = ewmh def {
   , focusFollowsMouse  = myFocusFollowsMouse
   , clickJustFocuses   = myClickJustFocuses
   , workspaces         = myWorkspaces
+  , handleEventHook    = handleEventHook defaultConfig <+> docksEventHook
+  , logHook            = dynamicLogWithPP xmobarPP { 
+                          ppOutput = hPutStrLn xmbProc
+                        , ppTitle = xmobarColor "#00FFFF" "" . shorten 50
+                        , ppCurrent = xmobarColor "#00FFFF" ""
+                        }
   , manageHook         = manageDocks <+> myManageHook <+> manageHook def
-  , logHook            = dynamicLogWithPP xmobarPP
   , layoutHook         = avoidStruts  myLayout
     }
 
