@@ -1,5 +1,63 @@
 # vim: set ft=zsh:
 
+# ================ Util
+
 mcd () {
     mkdir "$1" && cd "$1"
 }
+
+# ================ Git
+
+
+# ================ Agile
+
+_reread_sprint_variables() {
+    if [[ -e ~/.sprint ]]; then
+        local sprint_info=($(cat ~/.sprint))
+        export SPRINT_NAME=$sprint_info[1]
+        export SPRINT_START=$sprint_info[2]
+        export SPRINT_END=$sprint_info[3]
+    fi
+}
+
+start_sprint() {
+    local sprint=$1
+    local start_date=${"2:-$(date "+%Y-%m-%d")"}
+    local end_date=${"3:-$(date -d 2weeks "+%Y-%m-%d")"}
+
+    echo "$sprint\n$start_date\n$end_date" > ~/.sprint
+    _reread_sprint_variables
+}
+
+
+info_sprint() {
+    echo "Current sprint: $SPRINT_NAME"
+    echo "Start: $SPRINT_START End: $SPRINT_END"
+}
+
+# Initially read all Sprint variables
+_reread_sprint_variables
+
+# ================ Taskwarrior
+
+tw_dap () {
+    local ticket="DAP-$1"
+    local kind=$2
+
+    case $kind in
+        buslane)
+            echo "Creating tasks for buslane $ticket"
+            ;;;
+        feature)
+            echo "Creating tasks for feature $ticket"
+            echo "taskwarrior add 'Write tests for $ticket' +work +$SPRINT_NAME"
+            ;;;
+        bug)
+            echo "Creating tasks for bug $ticket"
+            ;;;
+        *)
+            echo "Creating tasks for $ticket"
+        #taskwarrior add "tests for $ticket" +work +$SPRINT_NAME
+    esac
+}
+
