@@ -85,6 +85,8 @@ zplug "b4b4r07/enhancd", \
 if zplug check "b4b4r07/enhancd"; then
     export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
     export ENHANCD_DOT_SHOW_FULLPATH=1
+    export ENHANCD_DISABLE_DOT=1
+    export ENHANCD_COMMAND=z
 fi
 
 zplug "plugins/git", \
