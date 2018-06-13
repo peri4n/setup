@@ -16,3 +16,5 @@
 	autosetuprebase = always
 [rerere]
 	enabled = true
+[merge]
+	renamelimit = 2000
