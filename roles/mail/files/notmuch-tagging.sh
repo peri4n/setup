@@ -2,7 +2,13 @@
 echo "Tagging new mail"
 notmuch new
 
-notmuch tag -inbox -unread -- '(to:narwhal-team@datameer.com or to:orca-team@datameer.com) and subject:JIRA'
+notmuch tag +jira 'subject:[JIRA] from:r2d2@datameer.com'
+notmuch tag +gh 'from:notifications@github.com'
+
+# mark all unimportant emails as read and remove it from the inbox
+notmuch tag -inbox -unread -- 'tag:gh and -@peri4n'
+notmuch tag -inbox -unread -- 'to:orca-team@datameer.com'
+notmuch tag -inbox -unread -- 'to:narwhal-team@datameer.com and tag:jira'
 
 # tag all messages from "me" as sent and remove tags inbox and unread
 notmuch tag -inbox +sent -- '(from:fabian.bull@datameer.com \
