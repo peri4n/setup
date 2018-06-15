@@ -8,6 +8,34 @@ mcd () {
 
 # ================ Git
 
+local extractHashFromLog="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+local commitDiff="$extractHashFromLog | xargs -I % sh -c 'git show --color=always % '"
+
+# fco - checkout git commit with previews
+fco() {
+
+    local commit
+    commit=$( git log --oneline | fzf --no-sort --reverse --tiebreak=index --no-multi --ansi --preview $commitDiff ) &&
+    git checkout $(echo "$commit" | sed "s/ .*//")
+}
+
+# fshow - git commit browser with previews
+fshow() {
+    git log --oneline |
+        fzf --no-sort --reverse --tiebreak=index --no-multi \
+            --ansi --preview $commitDiff \
+                --header "enter to view, alt-y to copy hash" \
+                --bind "enter:execute:$commitDiff   | less -R" \
+                --bind "alt-y:execute:$extractHashFromLog | pbcopy"
+}
+
+# fbr - checkout git branch
+fbr() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
 
 # ================ Agile
 
@@ -57,7 +85,7 @@ tw_dap () {
             ;;;
         *)
             echo "Creating tasks for $ticket"
-        #taskwarrior add "tests for $ticket" +work +$SPRINT_NAME
-    esac
-}
+            #taskwarrior add "tests for $ticket" +work +$SPRINT_NAME
+        esac
+    }
 
