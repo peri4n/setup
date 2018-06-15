@@ -5,7 +5,7 @@
     path: "{{ ansible_env.HOME }}/.config/"
     state: directory
 
-- name: Link offlineimap configuration files
+- name: Link offlineimap/alot configuration files
   file:
     src: "{{ role_path }}/files/{{ item }}"
     dest: "{{ ansible_env.HOME }}/.config/{{ item }}"

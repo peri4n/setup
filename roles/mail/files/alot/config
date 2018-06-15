@@ -8,17 +8,33 @@ prefer_plaintext = True
         realname = Fabian Bull
         address = fabian.bull@datameer.com
         sendmail_command = msmtp --account=datameer -t
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch address --format=json --output=recipients date:1Y.. AND from:fabian.bull@datameer.com'
+            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            shellcommand_external_filtering = False
 
     [[google]]
         realname = Fabian Bull
         address = bull.fabian@googlemail.com
         sendmail_command = msmtp --account=bullfabian -t
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch address --format=json --output=recipients date:1Y.. AND from:bull.fabian@googlemail.com'
+            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            shellcommand_external_filtering = False
 
     [[private]]
         realname = Fabian Bull
         address = fabian.bull@bioinform.at
         sendmail_command = msmtp --account=fabianbull -t
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch address --format=json --output=recipients date:1Y.. AND from:fabian.bull@bioinform.at'
+            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            shellcommand_external_filtering = False
 
 [bindings]
   [[search]]
     enter = select; fold *; unfold tag:unread;
+    x = untag unread; untag inbox
