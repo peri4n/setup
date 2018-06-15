@@ -4,6 +4,7 @@
 [submodule "roles/java/files/jenv"]
 	path = roles/java/files/jenv
 	url = https://github.com/gcuisinier/jenv.git
+	ignore = dirty
 [submodule "roles/python/files/pyenv"]
 	path = roles/python/files/pyenv
 	url = https://github.com/pyenv/pyenv.git
