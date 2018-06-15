@@ -13,7 +13,7 @@ Plug 'chriskempson/base16-vim'
 
 " utilities
 Plug 'scrooloose/nerdcommenter' "comment multiple lines
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'oblitum/rainbow'
