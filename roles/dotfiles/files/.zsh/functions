@@ -6,6 +6,12 @@ mcd () {
     mkdir "$1" && cd "$1"
 }
 
+# ================ Pass
+
+pwc() {
+    ls -d -1 $HOME/.password-store/**/*.gpg | sed 's/.gpg$//g' | sed "s/^$(echo $HOME | sed 's/\//\\\//g')\/.password-store//g" | fzf --no-multi --bind "enter:execute(pass -c {})+abort"
+}
+
 # ================ Git
 
 local extractHashFromLog="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
