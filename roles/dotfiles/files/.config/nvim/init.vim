@@ -20,7 +20,6 @@ Plug 'oblitum/rainbow'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'xolox/vim-misc'
 Plug 'gabrielelana/vim-markdown'
@@ -126,6 +125,14 @@ iabbrev tehn then
 iabbrev adn and
 
 scriptencoding utf-8
+
+nnoremap <leader>z :call FoldColumnToggle()<cr>
+
+function! FoldColumnToggle()
+    set list!
+    set number!
+    set relativenumber!
+endfunction
 
 " ================ Color scheme ====================
 
