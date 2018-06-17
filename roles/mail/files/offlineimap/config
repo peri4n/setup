@@ -1,3 +1,5 @@
+# vim: set filetype=dosini : 
+
 [general]
 accounts = Gmail,Work,BioinformatSpam,BioinformatFabianBull
 pythonfile = ~/.config/offlineimap/offlineimap.py
@@ -17,7 +19,9 @@ autorefresh = 5
 [Repository GmailLocal]
 type = Maildir
 localfolders = ~/Mail/bull_fabian_gmail
-nametrans = lambda folder: {'archive': '[Google Mail]/All Mail'
+nametrans = lambda folder: {
+    'archive': '[Google Mail]/All Mail',
+    'sent':    '[Google Mail]/Sent Mail'
                             }.get(folder, folder)
 
 [Repository GmailRemote]
@@ -26,15 +30,17 @@ type = Gmail
 remotehost = imap.googlemail.com
 remoteuser = bull.fabian@googlemail.com
 remotepasseval = get_pass('Private/gmail_offlineimap')
-nametrans = lambda folder: {'[Google Mail]/All Mail':  'archive'
+nametrans = lambda folder: {
+    '[Google Mail]/All Mail': 'archive',
+    '[Google Mail]/Sent Mail': 'sent'
                             }.get(folder, folder)
+
 folderfilter = lambda folder: folder not in [
     '[Google Mail]/Trash',
     '[Google Mail]/Spam',
     '[Google Mail]/Important',
     '[Google Mail]/Starred',
-    '[Google Mail]/Drafts',
-    '[Google mail]/Sent Mail']
+    '[Google Mail]/Drafts']
 
 
 [Account Work]
@@ -45,7 +51,9 @@ autorefresh = 5
 [Repository DatameerLocal]
 type = Maildir
 localfolders = ~/Mail/fabian_bull_datameer
-nametrans = lambda folder: {'archive': '[Gmail]/All Mail'
+nametrans = lambda folder: {
+    'archive': '[Gmail]/All Mail',
+    'sent':    '[Gmail]/Sent Mail'
                             }.get(folder, folder)
 
 [Repository DatameerRemote]
@@ -54,15 +62,16 @@ type = Gmail
 remotehost = imap.googlemail.com
 remoteuser = fabian.bull@datameer.com
 remotepasseval = get_pass('Datameer/google')
-nametrans = lambda folder: {'[Gmail]/All Mail':  'archive'
+nametrans = lambda folder: {
+    '[Gmail]/All Mail':  'archive',
+    '[Gmail]/Sent Mail': 'sent'
                             }.get(folder, folder)
 folderfilter = lambda folder: folder not in [
     '[Gmail]/Trash',
     '[Gmail]/Spam',
     '[Gmail]/Important',
     '[Gmail]/Starred',
-    '[Gmail]/Drafts',
-    '[Gmail]/Sent Mail']
+    '[Gmail]/Drafts']
 
 [Account BioinformatSpam]
 
@@ -82,8 +91,7 @@ remotepasseval = get_pass('Private/Email/spam_bioinform_at')
 folderfilter = lambda folder: folder not in [
     'Deleted Messages',
     'Drafts',
-    'Junk',
-    'Sent Messages']
+    'Junk']
 
 [Account BioinformatFabianBull]
 
@@ -103,5 +111,4 @@ remotepasseval = get_pass('Private/Email/fabian_bull_bioinform_at')
 folderfilter = lambda folder: folder not in [
     'Deleted Messages',
     'Drafts',
-    'Junk',
-    'Sent Messages']
+    'Junk']

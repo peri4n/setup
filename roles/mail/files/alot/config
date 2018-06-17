@@ -11,7 +11,7 @@ prefer_plaintext = True
          signature = ~/.config/alot/signatures/work.vcf
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:1Y.. AND from:fabian.bull@datameer.com'
+            command = 'notmuch address --format=json --output=sender date:1Y.. AND to:fabian.bull@datameer.com'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 
@@ -21,7 +21,7 @@ prefer_plaintext = True
         sendmail_command = msmtp --account=bullfabian -t
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:1Y.. AND from:bull.fabian@googlemail.com'
+            command = 'notmuch address --format=json --output=sender date:1Y.. AND to:bull.fabian@gmail.com'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 
@@ -32,7 +32,7 @@ prefer_plaintext = True
          signature = ~/.config/alot/signatures/private.vcf
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:1Y.. AND from:fabian.bull@bioinform.at'
+            command = 'notmuch address --format=json --output=sender date:1Y.. AND to:fabian.bull@bioinform.at'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 
