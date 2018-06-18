@@ -8,6 +8,7 @@ prefer_plaintext = True
         realname = Fabian Bull
         address = fabian.bull@datameer.com
         sendmail_command = msmtp --account=datameer -t
+         signature = ~/.config/alot/signatures/work.vcf
         [[[abook]]]
             type = shellcommand
             command = 'notmuch address --format=json --output=recipients date:1Y.. AND from:fabian.bull@datameer.com'
@@ -28,6 +29,7 @@ prefer_plaintext = True
         realname = Fabian Bull
         address = fabian.bull@bioinform.at
         sendmail_command = msmtp --account=fabianbull -t
+         signature = ~/.config/alot/signatures/private.vcf
         [[[abook]]]
             type = shellcommand
             command = 'notmuch address --format=json --output=recipients date:1Y.. AND from:fabian.bull@bioinform.at'
