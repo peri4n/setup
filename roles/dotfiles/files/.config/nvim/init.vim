@@ -9,23 +9,23 @@ filetype indent on
 
 call plug#begin('~/.config/nvim/plugged')
 " colorschemes
-Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'       " Colorscheme
 
 " utilities
-Plug 'scrooloose/nerdcommenter' "comment multiple lines
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'oblitum/rainbow'
+Plug 'scrooloose/nerdcommenter'                                          " Comment multiple lines
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }            " Auto complete
+Plug 'Shougo/neosnippet'                                                 " Template engine
+Plug 'Shougo/neosnippet-snippets'                                        " Snippets collection
+Plug 'oblitum/rainbow'                                                   " Colored paranthesis
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'junegunn/fzf.vim'
-Plug 'xolox/vim-misc'
-Plug 'gabrielelana/vim-markdown'
+Plug 'tpope/vim-fugitive'                                                " Git support
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File browser
+Plug 'junegunn/fzf.vim'                                                  " Fuzzy finder
 Plug 'junegunn/goyo.vim'
+Plug 'vimwiki/vimwiki'                                                   " Personal wiki
 
 " language specific
+Plug 'gabrielelana/vim-markdown'
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 Plug 'eagletmt/neco-ghc'
