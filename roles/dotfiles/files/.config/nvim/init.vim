@@ -20,6 +20,7 @@ Plug 'oblitum/rainbow'                                                   " Color
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                                                " Git support
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File browser
+Plug 'junegunn/fzf'                                                      " Fuzzy finder
 Plug 'junegunn/fzf.vim'                                                  " Fuzzy finder
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'                                                   " Personal wiki

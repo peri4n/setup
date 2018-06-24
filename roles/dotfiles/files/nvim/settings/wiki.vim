@@ -1,0 +1,7 @@
+let wiki_1 = {}
+let wiki_1.path = '~/docs/phd/'
+
+let wiki_2 = {}
+let wiki_2.path = '~/docs/journal/'
+
+let g:vimwiki_list = [wiki_1, wiki_2]
