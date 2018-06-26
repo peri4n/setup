@@ -40,7 +40,9 @@ folderfilter = lambda folder: folder not in [
     '[Google Mail]/Spam',
     '[Google Mail]/Important',
     '[Google Mail]/Starred',
-    '[Google Mail]/Drafts']
+    '[Google Mail]/Drafts',
+    'INBOX'
+    ]
 
 
 [Account Work]
@@ -71,7 +73,8 @@ folderfilter = lambda folder: folder not in [
     '[Gmail]/Spam',
     '[Gmail]/Important',
     '[Gmail]/Starred',
-    '[Gmail]/Drafts']
+    '[Gmail]/Drafts',
+    'INBOX']
 
 [Account BioinformatSpam]
 
