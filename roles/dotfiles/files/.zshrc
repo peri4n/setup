@@ -117,6 +117,11 @@ zplug "junegunn/fzf", \
     hook-build:"./install --bin", \
     use:"bin/{fzf-tmux,fzf}"
 
+zplug "firecat53/urlscan", \
+    as:command, \
+    hook-build:"./setup.py install", \
+    use:"bin/urlscan"
+
 zplug load
 
 source $ZPLUG_HOME/repos/junegunn/fzf/shell/completion.zsh
