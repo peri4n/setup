@@ -1,5 +1,5 @@
 let wiki_1 = {}
-let wiki_1.path = '~/docs/phd/'
+let wiki_1.path = '~/docs/phd/wiki'
 
 let wiki_2 = {}
 let wiki_2.path = '~/docs/journal/'
