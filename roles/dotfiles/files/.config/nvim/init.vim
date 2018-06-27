@@ -27,6 +27,7 @@ Plug 'vimwiki/vimwiki'                                                   " Perso
 
 " language specific
 Plug 'gabrielelana/vim-markdown'
+Plug 'reedes/vim-wordy'
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 Plug 'eagletmt/neco-ghc'
