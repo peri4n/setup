@@ -20,8 +20,7 @@ autorefresh = 5
 type = Maildir
 localfolders = ~/Mail/bull_fabian_gmail
 nametrans = lambda folder: {
-    'archive': '[Google Mail]/All Mail',
-    'sent':    '[Google Mail]/Sent Mail'
+    'archive': '[Google Mail]/All Mail'
                             }.get(folder, folder)
 
 [Repository GmailRemote]
@@ -31,8 +30,7 @@ remotehost = imap.googlemail.com
 remoteuser = bull.fabian@googlemail.com
 remotepasseval = get_pass('Private/gmail_offlineimap')
 nametrans = lambda folder: {
-    '[Google Mail]/All Mail': 'archive',
-    '[Google Mail]/Sent Mail': 'sent'
+    '[Google Mail]/All Mail': 'archive'
                             }.get(folder, folder)
 
 folderfilter = lambda folder: folder not in [
@@ -40,6 +38,7 @@ folderfilter = lambda folder: folder not in [
     '[Google Mail]/Spam',
     '[Google Mail]/Important',
     '[Google Mail]/Starred',
+    '[Google Mail]/Sent Mail',
     '[Google Mail]/Drafts',
     'INBOX'
     ]
@@ -54,8 +53,7 @@ autorefresh = 5
 type = Maildir
 localfolders = ~/Mail/fabian_bull_datameer
 nametrans = lambda folder: {
-    'archive': '[Gmail]/All Mail',
-    'sent':    '[Gmail]/Sent Mail'
+    'archive': '[Gmail]/All Mail'
                             }.get(folder, folder)
 
 [Repository DatameerRemote]
@@ -65,8 +63,7 @@ remotehost = imap.googlemail.com
 remoteuser = fabian.bull@datameer.com
 remotepasseval = get_pass('Datameer/google')
 nametrans = lambda folder: {
-    '[Gmail]/All Mail':  'archive',
-    '[Gmail]/Sent Mail': 'sent'
+    '[Gmail]/All Mail':  'archive'
                             }.get(folder, folder)
 folderfilter = lambda folder: folder not in [
     '[Gmail]/Trash',
@@ -74,6 +71,7 @@ folderfilter = lambda folder: folder not in [
     '[Gmail]/Important',
     '[Gmail]/Starred',
     '[Gmail]/Drafts',
+    '[Gmail]/Sent Mail',
     'INBOX']
 
 [Account BioinformatSpam]
