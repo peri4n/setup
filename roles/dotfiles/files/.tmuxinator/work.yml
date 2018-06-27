@@ -31,12 +31,16 @@ root: ~/dev/work/
 # post: tmux -CC attach -t dap
 
 windows:
-  - dap:
-      root: ~/dev/work/dap/
-  - dap2:
-      root: ~/dev/work/dap2/
-  - mola:
-      root: ~/dev/work/mola/
-  - mola-public:
-      root: ~/dev/work/mola-public/
+  - master:
+      root: ~/dev/work/dap/master
+  - v72:
+      root: ~/dev/work/dap/v72
+  - v71:
+      root: ~/dev/work/dap/v71
+  - v64:
+      root: ~/dev/work/dap/v64
+  - v63:
+      root: ~/dev/work/dap/v63
+  - v61:
+      root: ~/dev/work/dap/v61
 
