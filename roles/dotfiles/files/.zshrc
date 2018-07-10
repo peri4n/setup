@@ -71,7 +71,7 @@ fi
 # ================ Plugins ====================
 [ -d $HOME/.zsh/zplug/ ] && source $HOME/.zsh/zplug/init.zsh
 
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # ==== Util
 
@@ -82,18 +82,14 @@ zplug "chriskempson/base16-shell", \
 zplug "b4b4r07/enhancd", \
     use:init.sh
 
-if zplug check "b4b4r07/enhancd"; then
-    export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
-    export ENHANCD_DOT_SHOW_FULLPATH=1
-    export ENHANCD_DISABLE_DOT=1
-    export ENHANCD_COMMAND=z
-fi
-
-zplug "plugins/git", \
-    from:oh-my-zsh
+export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
+export ENHANCD_DOT_SHOW_FULLPATH=1
+export ENHANCD_DISABLE_DOT=1
+export ENHANCD_COMMAND=z
 
 # ==== Zsh
 
+export NVM_LAZY_LOAD=true
 zplug "lukechilds/zsh-nvm"
 
 zplug "zsh-users/zsh-syntax-highlighting", \
@@ -101,9 +97,6 @@ zplug "zsh-users/zsh-syntax-highlighting", \
 
 zplug "zsh-users/zsh-autosuggestions", \
     defer:2
-
-zplug "Tarrasch/zsh-bd", \
-    use:bd.zsh
 
 # ==== Binaries
 
