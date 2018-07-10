@@ -20,16 +20,15 @@ precmd() {
 }
 
 # ================ Options ====================
-setopt PROMPT_SUBST         # enable command substitution in the prompt
-setopt AUTO_CD              # enable directory switching without 'cd'
-setopt APPEND_HISTORY       # append instead of replacing the history file
-setopt INC_APPEND_HISTORY   # immediately append to the history file
-setopt SHARE_HISTORY        # share history between different zsh sessions
-setopt NULLGLOB             # if a glob does not match delete it as an argument
-
+setopt PROMPT_SUBST              # Enable command substitution in the prompt
+setopt AUTO_CD                   # Enable directory switching without 'cd'
+setopt NULL_GLOB                 # If a glob does not match delete it as an argument
+setopt AUTO_PARAM_SLASH          # Tab completing directory appends a slash
+setopt NO_FLOW_CONTROL           # Disable start (C-s) and stop (C-q) characters
 
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt APPEND_HISTORY            # Append instead of replacing the history file
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 setopt SHARE_HISTORY             # Share history between all sessions.
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
