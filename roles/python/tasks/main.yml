@@ -22,5 +22,8 @@
   args:
     creates: "{{ ansible_env.HOME }}/.pyenv/versions/{{ python3_version }}"
 
-- name: Use Python 2 as default
-  command: "pyenv global {{ python2_version }}"
+- name: Use Python 3 as default
+  command: "pyenv global {{ python3_version }}"
+
+- name: Install virtualenv
+  pip: executable=pip3 name=virtualenv
