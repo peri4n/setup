@@ -12,7 +12,7 @@
     src: "{{ role_path }}/files/ruby.sh"
     state: link
 
-- name: Make rbenv plugin folder
+- name: Create rbenv plugin folder
   file: 
     path: "{{ role_path }}/files/rbenv/plugins"
     state: directory
@@ -22,3 +22,12 @@
     path: "{{ role_path }}/files/rbenv/plugins/ruby-build"
     src: "{{ role_path }}/files/ruby-build"
     state: link
+
+- name: Install ruby
+  command: "rbenv install --skip-existing {{ ruby_version }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.rbenv/versions/{{ ruby_version }}"
+
+- name: Set global ruby version
+  command: "rbenv global {{ ruby_version }}"
+
