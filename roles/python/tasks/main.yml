@@ -12,4 +12,15 @@
     src: "{{ role_path }}/files/python.sh"
     state: link
 
+- name: Install Python 2
+  command: "pyenv install --skip-existing {{ python2_version }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/{{ python2_version }}"
 
+- name: Install Python 3
+  command: "pyenv install --skip-existing {{ python3_version }}"
+  args:
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/{{ python3_version }}"
+
+- name: Use Python 2 as default
+  command: "pyenv global {{ python2_version }}"
