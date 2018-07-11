@@ -4,28 +4,6 @@
     path: "{{ ansible_env.HOME }}/.config"
     state: directory
 
-- name: Create NeoVim directories
-  file:
-    path: "{{ ansible_env.HOME }}/.config/nvim/{{ item }}"
-    state: directory
-  with_items:
-    - "autoload"
-    - "plugin"
-    - "plugin/settings"
-
-- name: Link NeoVim plugin settings
-  file:
-    src: "{{ item }}"
-    path: "{{ ansible_env.HOME }}/.config/nvim/plugin/settings/{{item | basename }}"
-    state: link
-  with_fileglob:
-    - nvim/settings/*
-
-- name: Install NeoVim plugin manager
-  get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest: "{{ ansible_env.HOME }}/.config/nvim/autoload/"
-
 - name: Create symlinks of stored dotfiles not in the config folder
   file:
     src: "{{ role_path }}/files/{{ item }}"

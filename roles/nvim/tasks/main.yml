@@ -1,0 +1,47 @@
+---
+- name: Create XDG config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+
+- name: Create directories
+  file:
+    path: "{{ ansible_env.HOME }}/.config/nvim/{{ item }}"
+    state: directory
+  with_items:
+    - "autoload"
+    - "plugin"
+    - "plugin/settings"
+
+- name: Link init.vim
+  file:
+    src: "{{ role_path }}/files/init.vim"
+    path: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
+    state: link
+
+- name: Link plugin settings
+  file:
+    src: "{{ item }}"
+    path: "{{ ansible_env.HOME }}/.config/nvim/plugin/settings/{{item | basename }}"
+    state: link
+  with_fileglob:
+    - nvim/settings/*
+
+- name: Install plugin manager
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ ansible_env.HOME }}/.config/nvim/autoload/"
+
+- name: Install plugins
+  command: nvim -c 'PlugInstall' -c 'qa!' 
+  args:
+    creates: "{{ ansible_env.HOME }}/.config/nvim/plugged"
+
+- name: Install neovim support via rubygems
+  gem: name=neovim
+
+- name: Install neovim support via pip2
+  pip: executable=pip2 name=neovim
+
+- name: Install neovim support via pip3
+  pip: executable=pip3 name=neovim

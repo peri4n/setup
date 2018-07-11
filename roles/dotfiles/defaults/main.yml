@@ -1,6 +1,5 @@
 ---
 dotfiles:
-  - .config/nvim/init.vim
   - .gitconfig
   - .taskrc
   - .tmuxinator
