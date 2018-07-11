@@ -38,4 +38,26 @@
     creates: "{{ ansible_env.HOME }}/.config/nvim/plugged"
 
 - name: Install neovim support via rubygems
-  gem: name=neovim
+  gem: 
+    name: neovim
+    executable: "{{ ansible_env.HOME }}/.rbenv/versions/{{ ruby_version }}/bin/gem"
+
+
+- name: Install neovim support via python2
+  shell: |
+    virtualenv -p ~/.pyenv/versions/"{{ python2_version }}"/bin/python "{{ ansible_env.HOME }}"/dev/envs/nvim2
+    source "{{ ansible_env.HOME }}"/dev/envs/nvim2/bin/activate
+    pip install neovim
+    deactivate
+  args:
+    creates: "{{ ansible_env.HOME }}/dev/envs/nvim2"
+
+- name: Install neovim support via python3
+  shell: |
+    virtualenv -p ~/.pyenv/versions/"{{ python3_version }}"/bin/python "{{ ansible_env.HOME }}"/dev/envs/nvim3
+    source "{{ ansible_env.HOME }}"/dev/envs/nvim3/bin/activate
+    pip install neovim
+    pip install neovim-remote
+    deactivate
+  args:
+    creates: "{{ ansible_env.HOME }}/dev/envs/nvim3"

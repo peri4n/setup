@@ -97,6 +97,7 @@ set smartcase                   " Unless we type a capital
 
 let mapleader = ','
 let g:mapleader = ','
+let g:vimtex_compiler_progname = 'nvr'
 
 no <down> <Nop>
 no <up> <Nop>
