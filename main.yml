@@ -1,7 +1,11 @@
 ---
 - hosts: localhost
+
+  vars:
+    work: "{{ lookup('env', 'work') }}"
   roles:
     - { role: 'terminfo', tags: 'terminfo' }
+    - { role: 'dirs', tags: 'dirs' }
     - { role: 'fonts', tags: 'fonts' }
     - { role: 'news', tags: 'news' }
     - { role: 'dotfiles', tags: 'dotfiles' }

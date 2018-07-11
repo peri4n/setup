@@ -1,0 +1,33 @@
+---
+
+- name: Create common directories 
+  file:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: directory
+  with_items:
+    - "dev"
+    - "dev/repos"
+    - "dev/boxes"
+    - "dev/envs"
+
+- name: Create directories for work
+  file:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: directory
+  with_items:
+    - "dev/data"
+  when: work == "true"
+
+
+- name: Create directories for my private stuff
+  file:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: directory
+  with_items:
+    - "docs"
+    - "docs/phd"
+    - "docs/templates"
+    - "docs/wiki"
+    - "docs/papers"
+  when: work == "false" or work == ""
+
