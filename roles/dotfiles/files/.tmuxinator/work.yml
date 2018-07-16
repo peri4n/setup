@@ -33,6 +33,8 @@ root: ~/dev/work/
 windows:
   - master:
       root: ~/dev/work/dap/master
+  - v73:
+      root: ~/dev/work/dap/v73
   - v72:
       root: ~/dev/work/dap/v72
   - v71:
