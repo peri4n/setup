@@ -76,7 +76,7 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "chriskempson/base16-shell", \
     use:"scripts/base16-tomorrow-night.sh", \
-    defer:0
+    as:theme
 
 zplug "b4b4r07/enhancd", \
     use:init.sh
@@ -91,11 +91,11 @@ export ENHANCD_COMMAND=z
 export NVM_LAZY_LOAD=true
 zplug "lukechilds/zsh-nvm"
 
-zplug "zsh-users/zsh-syntax-highlighting", \
-    defer:2
+zplug "zdharma/fast-syntax-highlighting", \
+    defer:3
 
 zplug "zsh-users/zsh-autosuggestions", \
-    defer:2
+    defer:3
 
 # ==== Binaries
 
