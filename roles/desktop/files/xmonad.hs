@@ -7,25 +7,29 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Maximize
 import XMonad.Prompt.Pass
 import XMonad.Util.Run(spawnPipe)
 
 main = do
-    xmonad =<< statusBar myBar myPP toggleStrutsKey (ewmh def {
-    modMask = mod4Mask
+    xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
+
+-- Config augmented with Ewmh (used by rofi) and urgency hooks
+myConfig = ewmh (withUrgencyHook NoUrgencyHook $ def {
+    modMask            = mod4Mask
   , borderWidth        = 1
   , terminal           = "urxvt"
   , normalBorderColor  = "#cccccc"
   , focusedBorderColor = "#1e90ff"
-  , keys = myKeys
+  , keys               = myKeys
   , focusFollowsMouse  = myFocusFollowsMouse
   , clickJustFocuses   = myClickJustFocuses
   , workspaces         = myWorkspaces
---  , handleEventHook    = handleEventHook defaultConfig <+> docksEventHook
-  , manageHook         =  myManageHook <+> manageHook def
-  , layoutHook         = avoidStruts  myLayout
-                      })
+  , handleEventHook    = handleEventHook defaultConfig <+> docksEventHook
+  , manageHook         = myManageHook <+> manageHook def
+  , layoutHook         = avoidStruts myLayout
+  })
 
 -- Command to launch the bar.
 myBar = "xmobar"
@@ -34,6 +38,7 @@ myBar = "xmobar"
 myPP = xmobarPP { 
         ppTitle = xmobarColor "#00FFFF" "" . shorten 50
       , ppCurrent = xmobarColor "#00FFFF" ""
+      , ppUrgent = xmobarColor "yellow" "red" . xmobarStrip
                 }
 
 -- Key binding to toggle the gap for the bar.
@@ -59,7 +64,7 @@ myLayout = maximize (tiled) ||| Mirror tiled ||| Full
         ratio = 1/2
         delta = 3/100
 
--- | The xmonad key bindings. Add, modify or remove key bindings here.
+-- The xmonad key bindings. Add, modify or remove key bindings here.
 -- (The comment formatting character is used when generating the manpage)
 --
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())

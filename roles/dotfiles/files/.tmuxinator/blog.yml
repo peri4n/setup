@@ -1,5 +1,5 @@
 name: blog
-root: ~/dev/blog/
+root: ~/dev/me/my-site
 
 # Optional tmux socket
 # socket_name: foo
@@ -30,8 +30,8 @@ root: ~/dev/blog/
 
 windows:
   - dap:
-      root: ~/dev/blog/
+      root: ~/dev/me/my-site
       layout: 1b6e,237x69,0,0[237x49,0,0,0,237x19,0,50,1]
       panes:
           - nv .
-          - jekyll serve
+          - stack exec site watch
