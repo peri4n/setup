@@ -1,28 +1,54 @@
 set surround
 set clipboard=unnamedplus
-set showmode
+set number
 
-let mapleader = ","
+let mapleader = " "
 
-nmap <c-o> :action Back<cr>
-nmap <c-i> :action Forward<cr>
-
-nmap <leader>b :action GotoDeclaration<cr>
-
-nmap <leader>rv :action IntroduceVariable<cr>
-nmap <leader><leader> :action HideAllWindows<cr>
-
-nmap <leader>T :action GotoFile<cr>
-nmap <leader>t :action GotoClass<cr>
-nmap <leader>nt :action TypeHierarchy<cr>
-nmap <leader>ns :action FileStructurePopup<cr>
-nmap <leader>d :action ShowErrorDescription<cr>
-
-nnoremap <leader>z :action ChooseRunConfiguration<cr>
-nnoremap <leader>h :action QuickJavaDoc<cr>
+nnoremap <c-a> :action GotoAction<cr>
+nnoremap <leader><space> :action HideAllWindows<cr>
 
 "=================================
-"Easy system clipboard copy/paste
+" Code Navigation
+"=================================
+nnoremap <leader>T :action GotoFile<cr>
+nnoremap <leader>t :action GotoClass<cr>
+nnoremap <leader>b :action GotoDeclaration<cr>
+nnoremap <leader>h :action QuickJavaDoc<cr>
+nnoremap <leader>` :action Git.Branches<cr>
+
+nnoremap <c-e> :action RecentFiles<cr>
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+
+"=================================
+" Code Information
+"=================================
+nnoremap <leader>nt :action TypeHierarchy<cr>
+nnoremap <leader>ns :action FileStructurePopup<cr>
+nnoremap <leader>u :action FindUsages<cr>
+nnoremap <leader>d :action ShowErrorDescription<cr>
+
+"=================================
+" Refactorings
+"=================================
+nnoremap <leader>rv :action IntroduceVariable<cr>
+nnoremap <leader>rn :action RenameElement<cr>
+nnoremap <leader>rm :action RenameMethod<cr>
+nnoremap <leader>g :action Generate<cr>
+
+"=================================
+" Run configurations
+"=================================
+nnoremap <leader>z :action ChooseRunConfiguration<cr>
+
+"=================================
+" Searching
+"=================================
+nnoremap / :action Find<cr>
+nnoremap ? :action FindInPath<cr>
+
+"=================================
+" Easy system clipboard copy/paste
 "=================================
 noremap <space>y "*y
 noremap <space>Y "*Y
@@ -30,6 +56,6 @@ noremap <space>p "*p
 noremap <space>P "*P
 
 " IdeaVim uses 'a' for alt instead of Vim's 'm'
-nmap <a-j> 15gj
-nmap <a-k> 15gk
+noremap <a-j> 15gj
+noremap <a-k> 15gk
 
