@@ -2,8 +2,6 @@ scriptencoding utf-8
 
 if has('statusline')
 
-    highlight statuslineGit ctermfg=2  ctermbg=18
-
     set laststatus=2
 
     set statusline=
