@@ -5,5 +5,7 @@ dotfiles:
   - .tmuxinator
   - .tmux.conf
   - .zsh
+  - .zprofile
   - .zshrc
   - .ideavimrc
+  - .Xresources
