@@ -1,12 +1,13 @@
 # vim: set filetype=dosini : 
 
 [general]
-accounts = Gmail,Work,BioinformatSpam,BioinformatFabianBull
+accounts = Gmail,Work
 pythonfile = ~/.config/offlineimap/offlineimap.py
 maxsyncaccounts = 4
 
 [DEFAULT]
-sslcacertfile = /etc/ssl/cert.pem
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+ssl_version = tls1_2
 ssl = yes
 realdelete = no
 postsynchook = ~/.scripts/notmuch-tagging.sh
@@ -18,7 +19,7 @@ autorefresh = 5
 
 [Repository GmailLocal]
 type = Maildir
-localfolders = ~/Mail/bull_fabian_gmail
+localfolders = ~/mail/bull_fabian_gmail
 nametrans = lambda folder: {
     'archive': '[Google Mail]/All Mail'
                             }.get(folder, folder)
@@ -51,7 +52,7 @@ autorefresh = 5
 
 [Repository DatameerLocal]
 type = Maildir
-localfolders = ~/Mail/fabian_bull_datameer
+localfolders = ~/mail/fabian_bull_datameer
 nametrans = lambda folder: {
     'archive': '[Gmail]/All Mail'
                             }.get(folder, folder)
@@ -73,43 +74,3 @@ folderfilter = lambda folder: folder not in [
     '[Gmail]/Drafts',
     '[Gmail]/Sent Mail',
     'INBOX']
-
-[Account BioinformatSpam]
-
-localrepository = BioinformatSpamLocal
-remoterepository = BioinformatSpamRemote
-
-[Repository BioinformatSpamLocal]
-type = Maildir
-localfolders = ~/Mail/spam_bioinformat
-
-[Repository BioinformatSpamRemote]
-maxconnections = 5
-type = IMAP
-remotehost = nunki.uberspace.de
-remoteuser = spam@bioinform.at
-remotepasseval = get_pass('Private/Email/spam_bioinform_at')
-folderfilter = lambda folder: folder not in [
-    'Deleted Messages',
-    'Drafts',
-    'Junk']
-
-[Account BioinformatFabianBull]
-
-localrepository = BioinformatFabianBullLocal
-remoterepository = BioinformatFabianBullRemote
-
-[Repository BioinformatFabianBullLocal]
-type = Maildir
-localfolders = ~/Mail/fabian_bull_bioinformat
-
-[Repository BioinformatFabianBullRemote]
-maxconnections = 5
-type = IMAP
-remotehost = nunki.uberspace.de
-remoteuser = fabian.bull@bioinform.at
-remotepasseval = get_pass('Private/Email/fabian_bull_bioinform_at')
-folderfilter = lambda folder: folder not in [
-    'Deleted Messages',
-    'Drafts',
-    'Junk']

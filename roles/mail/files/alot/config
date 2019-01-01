@@ -1,4 +1,4 @@
-initial_command = search to:bull.fabian@googlemail.com; search to:fabian.bull@datameer.com; bufferlist; taglist; buffer 2
+initial_command = search to:bull.fabian@googlemail.com and tag:inbox; search to:fabian.bull@datameer.com and tag:inbox; bufferlist; taglist; buffer 2
 theme = my
 thread_focus_linewise = False
 prefer_plaintext = True
@@ -24,18 +24,6 @@ prefer_plaintext = True
             command = 'notmuch address --format=json --output=sender date:1Y.. AND to:bull.fabian@gmail.com'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
-
-    [[private]]
-        realname = Fabian Bull
-        address = fabian.bull@bioinform.at
-        sendmail_command = msmtp --account=fabianbull -t
-         signature = ~/.config/alot/signatures/private.vcf
-        [[[abook]]]
-            type = shellcommand
-            command = 'notmuch address --format=json --output=sender date:1Y.. AND to:fabian.bull@bioinform.at'
-            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
-            shellcommand_external_filtering = False
-
 [bindings]
   [[search]]
     enter = select; fold *; unfold tag:unread;
