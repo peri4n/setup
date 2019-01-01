@@ -15,7 +15,5 @@
     - { role: 'news', tags: 'news' }
     - { role: 'dotfiles', tags: 'dotfiles' }
     - { role: 'nvim', tags: 'nvim' }
-    - { role: 'ruby', tags: 'ruby' }
-    - { role: 'python', tags: 'python' }
     - { role: 'java', tags: 'java' }
     - { role: 'mail', tags: 'mail' }
