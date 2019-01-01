@@ -1,23 +1,10 @@
 # If profiling is needed
 #zmodload zsh/zprof
 
-autoload -Uz vcs_info
 autoload -U edit-command-line
 
 # ================ ZLE ====================
 zle -N edit-command-line
-
-# ================ Styles ====================
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*:*' get-revision true
-zstyle ':vcs_info:git*:*' check-for-changes true
-zstyle ':vcs_info:git*:*' formats "%F{blue}(%b)%f %i %m%u%c "
-zstyle ':vcs_info:git*:*' stagedstr "%F{green}S%f"
-zstyle ':vcs_info:git*:*' unstagedstr "%F{red}U%f"
-
-precmd() {
-    vcs_info
-}
 
 # ================ Options ====================
 setopt PROMPT_SUBST              # Enable command substitution in the prompt
@@ -41,20 +28,13 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Dont execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
+setopt VI                        # Enable vi mode
+
 # ================ Key Bindings ====================
-bindkey -e
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-# ================ Prompt ====================
-PROMPT='%F{cyan}%n%f %# ' # user name
-PROMPT=$PROMPT'%F{yellow}%m%f ' # host machine
-PROMPT=$PROMPT'%2c' # two directories up
-PROMPT=$PROMPT' ${vcs_info_msg_0_}
-\x -> '
-
 # ================ Variables ====================
-RPROMPT='%F{cyan}%h%f'
 
 HISTFILE="$HOME/.zhistory"     # file to write the history to
 HISTSIZE=10000000              # max number of commands written to history per session
@@ -67,59 +47,16 @@ if [ -d ~/.zsh/shims ]; then
     for f in $HOME/.zsh/shims/*.sh; do source $f; done
 fi
 
-# ================ Plugins ====================
-[ -d $HOME/.zsh/zplug/ ] && source $HOME/.zsh/zplug/init.zsh
-
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-
-# ==== Util
-
-zplug "chriskempson/base16-shell", \
-    use:"scripts/base16-tomorrow-night.sh", \
-    as:theme
-
-zplug "b4b4r07/enhancd", \
-    use:init.sh
-
-export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
-export ENHANCD_DOT_SHOW_FULLPATH=1
-export ENHANCD_DISABLE_DOT=1
-export ENHANCD_COMMAND=z
-
-# ==== Zsh
-
-export NVM_LAZY_LOAD=true
-zplug "lukechilds/zsh-nvm"
-
-zplug "zdharma/fast-syntax-highlighting", \
-    defer:3
-
-zplug "zsh-users/zsh-autosuggestions", \
-    defer:3
-
-# ==== Binaries
-
-zplug "ggreer/the_silver_searcher", \
-    as:command, \
-    hook-build:"./build.sh", \
-    use:ag
-
-zplug "junegunn/fzf", \
-    as:command, \
-    hook-build:"./install --bin", \
-    use:"bin/{fzf-tmux,fzf}"
-
-zplug "firecat53/urlscan", \
-    as:command, \
-    hook-build:"./setup.py install", \
-    use:"bin/urlscan"
-
-zplug load
-
-source $ZPLUG_HOME/repos/junegunn/fzf/shell/completion.zsh
-source $ZPLUG_HOME/repos/junegunn/fzf/shell/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/autojump/autojump.zsh
 
 export GPG_TTY=$(tty)
+
+# ================ Prompt ====================
+PROMPT="%F{magenta}%(!.#.$)%f "
 
 # end profiling
 #zprof

@@ -12,8 +12,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-alias l='ls -lGh'
-alias ll='ls -alGh'
+alias l='ls -lh --color --group-directories-first'
+alias ll='ls -Alh --color --group-directories-first'
 
 alias ff="find . -type f -name"
 
@@ -50,6 +50,16 @@ alias gls='git log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" -
 alias gp='git push'
 alias gst='git status --short --branch'
 
+# kubernetes
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kdp='kubectl describe pods'
+
+# configs
+alias cn='$EDITOR ~/.config/nvim/init.vim'
+alias cz='$EDITOR ~/.zshrc'
+alias sz='source ~/.zshrc'
+
 # taskwarrior
 alias tw='task'
 alias twa='task add'
@@ -61,3 +71,6 @@ alias pw='pass'
 
 # tmux
 alias t='tmux'
+
+# stuff
+alias r=ranger
