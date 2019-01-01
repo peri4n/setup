@@ -95,8 +95,8 @@ set smartcase                   " Unless we type a capital
 
 " ================ Mappings =========================
 
-let mapleader = ','
-let g:mapleader = ','
+let mapleader = " "
+let g:mapleader = " "
 let g:vimtex_compiler_progname = 'nvr'
 
 no <down> <Nop>
@@ -138,11 +138,8 @@ function! FoldColumnToggle()
 endfunction
 
 " ================ Color scheme ====================
-
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+set termguicolors
+colorscheme base16-eighties
 
 set clipboard+=unnamedplus " use onlye a single clipboard
 
