@@ -2,7 +2,6 @@
 dotfiles:
   - .gitconfig
   - .taskrc
-  - .tmuxinator
   - .tmux.conf
   - .zsh
   - .zprofile
