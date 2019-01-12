@@ -9,10 +9,11 @@
     python_versions: [python2_version, python3_version]
 
   roles:
-    - { role: 'terminfo', tags: 'terminfo' }
+    - { role: 'desktop', tags: 'desktop' }
     - { role: 'dirs', tags: 'dirs' }
-    - { role: 'fonts', tags: 'fonts' }
-    - { role: 'news', tags: 'news' }
     - { role: 'dotfiles', tags: 'dotfiles' }
-    - { role: 'nvim', tags: 'nvim' }
+    - { role: 'fonts', tags: 'fonts' }
     - { role: 'mail', tags: 'mail' }
+    - { role: 'news', tags: 'news' }
+    - { role: 'nvim', tags: 'nvim' }
+    - { role: 'terminfo', tags: 'terminfo' }

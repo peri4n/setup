@@ -1,0 +1,26 @@
+---
+- name: Create xmonad directory
+  file:
+    path: "{{ ansible_env.HOME }}/.xmonad/"
+    state: directory
+
+- name: Link xmonad configuration
+  file:
+    src: "{{ role_path }}/files/xmonad.hs"
+    path: "{{ ansible_env.HOME }}/.xmonad/xmonad.hs"
+    state: link
+
+- name: Link xmobar configuration
+  file:
+    src: "{{ role_path }}/files/{{ item}}"
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: link
+  with_items:
+    - ".xmobarrc"
+    - ".xinitrc"
+    - ".xbindkeysrc"
+
+- name: Set desktop wallpaper
+  command: "feh --bg-scale {{ role_path }}/files/wallpaper/minimal_wallpaper.jpg"
+  args:
+    creates: "{{ ansible_env.HOME }}/.fehbg"

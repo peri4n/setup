@@ -1,27 +1,32 @@
 import XMonad
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+import Data.List (isPrefixOf,isInfixOf)
 import System.Exit
 import System.IO
+import Graphics.X11.ExtraTypes.XF86
+import XMonad.Actions.WindowGo
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Maximize
+import XMonad.Layout.NoBorders
+import XMonad.Prompt
+import XMonad.Prompt.FuzzyMatch
 import XMonad.Prompt.Pass
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.Run
 
-main = do
-    xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
+main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 
 -- Config augmented with Ewmh (used by rofi) and urgency hooks
 myConfig = ewmh (withUrgencyHook NoUrgencyHook $ def {
     modMask            = mod4Mask
   , borderWidth        = 1
-  , terminal           = "urxvt"
-  , normalBorderColor  = "#cccccc"
-  , focusedBorderColor = "#1e90ff"
+  , terminal           = "st"
+  , normalBorderColor  = "darkgrey"
+  , focusedBorderColor = "orange"
   , keys               = myKeys
   , focusFollowsMouse  = myFocusFollowsMouse
   , clickJustFocuses   = myClickJustFocuses
@@ -36,13 +41,19 @@ myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 myPP = xmobarPP { 
-        ppTitle = xmobarColor "#00FFFF" "" . shorten 50
-      , ppCurrent = xmobarColor "#00FFFF" ""
-      , ppUrgent = xmobarColor "yellow" "red" . xmobarStrip
+        ppTitle = xmobarColor "orange" "" . shorten 50
+      , ppCurrent = xmobarColor "black" "orange" . wrap " " " "
+      , ppUrgent = xmobarColor "red" "" . xmobarStrip
+      , ppLayout = xmobarColor "orange" "" . (\x -> case x of
+                "Maximize Tall" -> "[|]"
+                "Full" -> "[X]"
+                "Mirror Tall" -> "[-]"
+                _ -> x
+                )
                 }
 
 -- Key binding to toggle the gap for the bar.
-toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask .|. shiftMask, xK_b)
+toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask .|. shiftMask, xK_b)
 
 -- Click is passed through when clicked on an inactive window
 myClickJustFocuses = False
@@ -54,10 +65,12 @@ myWorkspaces :: [String]
 myWorkspaces = ["Web", "Dev", "Chat", "Mail"]
 
 myManageHook  = composeAll [ 
-  appName  =? "Navigator"       --> doShift "Web" -- firefox
+  isPrefixOf "jetbrains"   <$> className --> doShift "Dev",
+  isPrefixOf "qutebrowser" <$> className --> doShift "Web",
+  (className =? "Slack")                 --> doF (W.shift "Chat")
                            ]
 
-myLayout = maximize (tiled) ||| Mirror tiled ||| Full
+myLayout = smartBorders Full ||| maximize tiled ||| Mirror tiled
     where
         tiled = Tall nmaster delta ratio
         nmaster = 1
@@ -68,11 +81,11 @@ myLayout = maximize (tiled) ||| Mirror tiled ||| Full
 -- (The comment formatting character is used when generating the manpage)
 --
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+myKeys conf @ XConfig {XMonad.modMask = modMask} = M.fromList $
     -- launching and killing programs
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf) -- %! Launch terminal
-      , ((modMask,               xK_p     ), spawn "rofi -show run") -- %! Launch dmenu
-      , ((modMask,               xK_w     ), spawn "rofi -show window") -- %! Launch dmenu
+      , ((modMask,               xK_p     ), spawn "rofi -show run -modi run")
+      , ((modMask,               xK_w     ), spawn "rofi -show window")
       , ((modMask .|. shiftMask, xK_c     ), kill) -- %! Close the focused window
 
     -- switch layouts
@@ -97,6 +110,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       , ((modMask,               xK_h     ), sendMessage Shrink) -- %! Shrink the master area
       , ((modMask,               xK_l     ), sendMessage Expand) -- %! Expand the master area
 
+      , ((modMask .|. shiftMask, xK_p), raiseMaybe (runInTerm "-t htop" "htop") (title =? "htop"))
+      , ((modMask .|. shiftMask, xK_y), raiseMaybe (runInTerm "-t ranger" "ranger") (title =? "ranger"))
+      , ((modMask .|. shiftMask, xK_t), raiseMaybe (runInTerm "-t task" "tasksh") (title =? "task"))
+      , ((modMask,               xK_c), spawn "clipmenu")
+
     -- floating layer support
       , ((modMask,               xK_t     ), withFocused $ windows . W.sink) -- %! Push window back into tiling
 
@@ -105,11 +123,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       , ((modMask               , xK_period), sendMessage (IncMasterN (-1))) -- %! Deincrement the number of windows in the master area
 
     -- quit, or restart
-      , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess)) -- %! Quit xmonad
+      , ((modMask .|. shiftMask, xK_q     ), io exitSuccess) -- %! Quit xmonad
       , ((modMask              , xK_q     ), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi") -- %! Restart xmonad
 
     -- pass integration
-      , ((modMask, xK_y)                              , passPrompt def)
+      , ((modMask, xK_y)                              , passPrompt (def { searchPredicate = fuzzyMatch }))
 
     ]
     ++
@@ -117,4 +135,4 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-shift-[1..9] %! Move client to workspace N
     [((m .|. modMask, k), windows $ f i)
       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-      , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
