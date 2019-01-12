@@ -1,0 +1,26 @@
+---
+- name: Create Qutebrowser directories
+  file:
+    path: "{{ ansible_env.HOME }}/.config/{{ item }}/"
+    state: directory
+  with_items:
+    - "qutebrowser"
+    - "qutebrowser/bookmarks"
+
+- name: Install Qutebrowser configuration
+  file:
+    src: "{{ role_path }}/files/config.py"
+    path: "{{ ansible_env.HOME }}/.config/qutebrowser/config.py"
+    state: link
+
+- name: Install Qutebrowser bookmarks
+  file:
+    src: "{{ role_path }}/files/urls"
+    path: "{{ ansible_env.HOME }}/.config/qutebrowser/bookmarks/urls"
+    state: link
+
+- name: Install Qutebrowser quickmarks
+  file:
+    src: "{{ role_path }}/files/quickmarks"
+    path: "{{ ansible_env.HOME }}/.config/qutebrowser/quickmarks"
+    state: link

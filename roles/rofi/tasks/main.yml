@@ -1,4 +1,3 @@
-
 ---
 - name: Create Rofi configuration directory
   file:
@@ -7,7 +6,7 @@
 
 - name: Link Rofi configuration files
   file:
-    src: "{{ role_path }}/files/{{ item}}"
+    src: "{{ role_path }}/files/{{ item }}"
     path: "{{ ansible_env.HOME }}/.config/rofi/{{ item }}"
     state: link
   with_items:
