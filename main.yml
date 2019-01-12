@@ -16,5 +16,6 @@
     - { role: 'mail', tags: 'mail' }
     - { role: 'news', tags: 'news' }
     - { role: 'nvim', tags: 'nvim' }
+    - { role: 'ranger', tags: 'ranger' }
     - { role: 'terminfo', tags: 'terminfo' }
     - { role: 'zsh', tags: 'zsh' }

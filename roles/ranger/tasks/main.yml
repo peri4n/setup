@@ -1,0 +1,25 @@
+---
+- name: Create Ranger configuration directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/ranger/"
+    state: directory
+
+- name: Link Ranger configuration files
+  file:
+    src: "{{ role_path }}/files/{{ item}}"
+    path: "{{ ansible_env.HOME }}/.config/ranger/{{ item }}"
+    state: link
+  with_items:
+    - "rc.conf"
+    - "rifle.conf"
+
+- name: Create Ranger colorscheme directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/ranger/colorschemes/"
+    state: directory
+
+- name: Install Ranger colorscheme
+  file:
+    src: "{{ role_path }}/files/colorschemes/mine.py"
+    path: "{{ ansible_env.HOME }}/.config/ranger/colorschemes/mine.py"
+    state: link
