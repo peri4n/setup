@@ -1,0 +1,15 @@
+
+---
+- name: Create Rofi configuration directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/rofi/"
+    state: directory
+
+- name: Link Rofi configuration files
+  file:
+    src: "{{ role_path }}/files/{{ item}}"
+    path: "{{ ansible_env.HOME }}/.config/rofi/{{ item }}"
+    state: link
+  with_items:
+    - "config.rasi"
+    - "base16-eighties.rasi"
