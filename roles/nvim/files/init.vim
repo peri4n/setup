@@ -12,6 +12,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'       " Colorscheme
 
 " utilities
+Plug 'tpope/vim-unimpaired'
+Plug 'mhinz/neovim-remote'                                               " Acces NeoVim from the shell
 Plug 'scrooloose/nerdcommenter'                                          " Comment multiple lines
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }            " Auto complete
 Plug 'Shougo/neosnippet'                                                 " Template engine
@@ -20,14 +22,11 @@ Plug 'oblitum/rainbow'                                                   " Color
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                                                " Git support
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File browser
-Plug 'junegunn/fzf'                                                      " Fuzzy finder
 Plug 'junegunn/fzf.vim'                                                  " Fuzzy finder
-Plug 'junegunn/goyo.vim'
-Plug 'vimwiki/vimwiki'                                                   " Personal wiki
+Plug 'neomake/neomake'
 
 " language specific
 Plug 'gabrielelana/vim-markdown'
-Plug 'reedes/vim-wordy'
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 Plug 'neovimhaskell/haskell-vim'
