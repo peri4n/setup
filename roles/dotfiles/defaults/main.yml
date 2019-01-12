@@ -3,8 +3,5 @@ dotfiles:
   - .gitconfig
   - .taskrc
   - .tmux.conf
-  - .zsh
-  - .zprofile
-  - .zshrc
   - .ideavimrc
   - .Xresources

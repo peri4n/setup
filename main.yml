@@ -17,3 +17,4 @@
     - { role: 'news', tags: 'news' }
     - { role: 'nvim', tags: 'nvim' }
     - { role: 'terminfo', tags: 'terminfo' }
+    - { role: 'zsh', tags: 'zsh' }

@@ -1,0 +1,15 @@
+
+- name: Link zsh directory
+  file:
+    src: "{{ role_path }}/files/.zsh"
+    path: "{{ ansible_env.HOME }}/.zsh"
+    state: link
+
+- name: Link zsh config files
+  file:
+    src: "{{ role_path }}/files/{{ item }}"
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: link
+  with_items:
+    - ".zshrc"
+    - ".zprofile"

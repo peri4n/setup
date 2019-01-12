@@ -69,7 +69,7 @@ fi
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source /usr/share/autojump/autojump.zsh
 
 bindkey '^ ' autosuggest-accept  # Ctrl Space
