@@ -1,11 +1,10 @@
 # vim: set ft=zsh:
 
 # utility
-alias nv='nvim'
+alias n='nvim'
 alias gw='./gradlew'
 alias gwi='./gradlew -i'
 alias mkdir='mkdir -pv'
-alias o='open'
 alias e='exit'
 
 alias ...='cd ../..'
@@ -18,8 +17,7 @@ alias ll='ls -Alh --color --group-directories-first'
 alias ff="find . -type f -name"
 
 # post aliases
-alias -g M='| more'
-alias -g C='| pbcopy'
+alias -g L='| less -R'
 alias -g G='| grep'
 
 # vagrant
@@ -50,14 +48,23 @@ alias gls='git log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" -
 alias gp='git push'
 alias gst='git status --short --branch'
 
-# kubernetes
+# Kubernetes
 alias k='kubectl'
 alias kgp='kubectl get pods'
 alias kdp='kubectl describe pods'
 
+alias kgs='kubectl get svc'
+alias kga='kubectl get all'
+
+# Docker
+alias d='docker'
+alias di='docker images'
+
 # configs
 alias cn='$EDITOR ~/.config/nvim/init.vim'
 alias cz='$EDITOR ~/.zshrc'
+alias ca='$EDITOR ~/.zsh/aliases'
+alias cx='$EDITOR ~/.xmonad/xmonad.hs'
 alias sz='source ~/.zshrc'
 
 # taskwarrior
@@ -65,6 +72,10 @@ alias tw='task'
 alias twa='task add'
 alias twd='task done'
 alias twl='task log'
+
+# pacman
+alias p='pacman'
+alias sp='sudo pacman'
 
 # password store
 alias pw='pass'

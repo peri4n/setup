@@ -1,6 +1,9 @@
 # If profiling is needed
 #zmodload zsh/zprof
 
+autoload -Uz compinit
+compinit
+
 autoload -U edit-command-line
 
 # ================ ZLE ====================
@@ -34,11 +37,28 @@ setopt VI                        # Enable vi mode
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
+
 # ================ Variables ====================
 
 HISTFILE="$HOME/.zhistory"     # file to write the history to
 HISTSIZE=10000000              # max number of commands written to history per session
 SAVEHIST=10000000              # max number of lines in the history file
+
+source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# To define styles for nested brackets up to level 4
+FAST_HIGHLIGHT_STYLES[bracket-level-1]='fg=magenta,bold'
+FAST_HIGHLIGHT_STYLES[bracket-level-2]='fg=red,bold'
+FAST_HIGHLIGHT_STYLES[bracket-level-3]='fg=blue,bold'
+
+# Declare the variable
+typeset -A FAST_HIGHLIGHT_STYLES
+# To differentiate aliases from other command types
+FAST_HIGHLIGHT_STYLES[alias]='fg=cyan'
+FAST_HIGHLIGHT_STYLES[unknown-token]='fg=white'
+FAST_HIGHLIGHT_STYLES[command]='fg=green'
+FAST_HIGHLIGHT_STYLES[globbing]='fg=blue'
+FAST_HIGHLIGHT_STYLES[subcommand]='fg=yellow'
 
 source $HOME/.zsh/exports
 source $HOME/.zsh/aliases
@@ -49,10 +69,11 @@ fi
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source /usr/share/autojump/autojump.zsh
 
+bindkey '^ ' autosuggest-accept  # Ctrl Space
+bindkey '^[^M' autosuggest-execute # Ctrl-Enter
 export GPG_TTY=$(tty)
 
 # ================ Prompt ====================
