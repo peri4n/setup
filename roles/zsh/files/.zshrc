@@ -36,7 +36,26 @@ setopt VI                        # Enable vi mode
 # ================ Key Bindings ====================
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
 
+# Set normal mode timout to 0.1s
+export KEYTIMEOUT=1
+
+# ================ Prompt ====================
+
+function zle-line-init zle-keymap-select {
+    PROMPT_NORMAL="%F{magenta}%(!.#.$)%f "
+    PROMPT_INS="%F{green}%(!.#.$)%f "
+    PROMPT="${${KEYMAP/vicmd/$PROMPT_NORMAL}/(main|viins)/$PROMPT_INS}$EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # ================ Variables ====================
 
@@ -76,8 +95,6 @@ bindkey '^ ' autosuggest-accept  # Ctrl Space
 bindkey '^[^M' autosuggest-execute # Ctrl-Enter
 export GPG_TTY=$(tty)
 
-# ================ Prompt ====================
-PROMPT="%F{magenta}%(!.#.$)%f "
 
 # end profiling
 #zprof
