@@ -111,6 +111,18 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>ff :FZF<cr>
 nnoremap <leader>fa :Ag<cr>
 
+" Split bindings
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-\> :vsplit<cr>
+nnoremap <C-_> :split<cr>
+nnoremap <C-q> :close<cr>
+
+set splitbelow
+set splitright
+
 noremap <C-n> :bn<cr>
 noremap <C-p> :bp<cr>
 

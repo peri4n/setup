@@ -63,6 +63,7 @@ alias di='docker images'
 # configs
 alias cn='$EDITOR ~/.config/nvim/init.vim'
 alias cz='$EDITOR ~/.zshrc'
+alias ct='$EDITOR ~/.tmux.conf'
 alias ca='$EDITOR ~/.zsh/aliases'
 alias cx='$EDITOR ~/.xmonad/xmonad.hs'
 alias sz='source ~/.zshrc'
@@ -80,8 +81,21 @@ alias sp='sudo pacman'
 # password store
 alias pw='pass'
 
-# tmux
-alias t='tmux'
+##################### 
+#      TMUX         #
+##################### 
+
+# General short cut
+alias t=' tmux'
+
+# Creates a new session
+alias tn=' tmux new-session'
+
+# Attaches tmux to a session (example: ta portal)
+alias ta='tmux attach -t'
+
+# Lists all ongoing sessions
+alias tl='tmux list-sessions'alias ta='tmux attach'
 
 # stuff
 alias r=ranger
