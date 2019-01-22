@@ -10,7 +10,8 @@ c.url.searchengines = {
       "wa" : "https://wiki.archlinux.org/?search={}",
       "w": "https://en.wikipedia.org/?search={}",
       "osm": "http://www.openstreetmap.org/search?query={}",
-      "wt": "http://en.wiktionary.org/?search={}"
+      "wt": "http://en.wiktionary.org/?search={}",
+      "ji": "https://jira.datameer.com/browse/{}"
       }
 c.url.default_page = "https://news.ycombinator.com/"
 c.url.start_pages = "https://news.ycombinator.com/"

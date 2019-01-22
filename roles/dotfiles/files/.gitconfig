@@ -2,10 +2,10 @@
     default = simple
 [user]
     name = Fabian Bull
-    email = fabian.bull@bioinform.at
+    email = fabian.bull@datameer.com
     signingkey = 1DE6482F
 [core]
-    excludesfile = /Users/fbull/.gitignore_global
+    excludesfile = /home/fbull/.gitignore_global
     editor = nvim
 	autocrlf = input
 [commit]
