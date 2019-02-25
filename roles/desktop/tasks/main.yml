@@ -10,9 +10,20 @@
     path: "{{ ansible_env.HOME }}/.xmonad/xmonad.hs"
     state: link
 
+- name: Create dunst directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/dunst"
+    state: directory
+
+- name: Link dunst configuration
+  file:
+    src: "{{ role_path }}/files/dunst/dunstrc"
+    path: "{{ ansible_env.HOME }}/.config/dunst/dunstrc"
+    state: link
+
 - name: Link xmobar configuration
   file:
-    src: "{{ role_path }}/files/{{ item}}"
+    src: "{{ role_path }}/files/{{ item }}"
     path: "{{ ansible_env.HOME }}/{{ item }}"
     state: link
   with_items:
