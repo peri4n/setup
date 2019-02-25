@@ -11,7 +11,6 @@
     dest: "{{ ansible_env.HOME }}/.config/{{ item }}"
     state: link
   with_items:
-    - offlineimap
     - alot
 
 - name: Link remaining configuration files
@@ -21,6 +20,7 @@
     state: link
   with_items:
     - .msmtprc
+    - .mbsyncrc
     - .notmuch-config
     - .mailcap
 

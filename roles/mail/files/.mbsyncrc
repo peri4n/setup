@@ -1,0 +1,93 @@
+#########################
+#    Private account    #
+#########################
+IMAPAccount gmail
+# Address to connect to
+Host imap.gmail.com
+User bull.fabian@googlemail.com
+PassCmd "pass show Private/Email/Tokens/bull.fabian@googlemail.com"
+#
+# Use SSL
+SSLType IMAPS
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/Inbox
+
+Channel gmail-inbox
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX"
+Sync Pull New ReNew Flags
+Sync Push Delete Flags
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-all
+Master :gmail-remote:"[Google Mail]/All Mail"
+Slave :gmail-local:"all"
+Sync Pull New ReNew Flags
+Sync Push Delete Flags
+Create Both
+Expunge Both
+SyncState *
+
+Group private
+Channel gmail-inbox
+Channel gmail-all
+
+#########################
+#    Work account    #
+#########################
+IMAPAccount datameer
+# Address to connect to
+Host imap.gmail.com
+User fabian.bull@datameer.com
+PassCmd "pass show Datameer/google"
+#
+# Use SSL
+SSLType IMAPS
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore datameer-remote
+Account datameer
+
+MaildirStore datameer-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.mail/datameer/
+Inbox ~/.mail/datameer/Inbox
+
+Channel datameer-inbox
+Master :datameer-remote:
+Slave :datameer-local:
+Patterns "INBOX"
+Sync Pull New ReNew Flags
+Sync Push Delete Flags
+Create Both
+SyncState *
+
+Channel datameer-all
+Master :datameer-remote:"[Gmail]/All Mail"
+Slave :datameer-local:"all"
+Sync Pull New ReNew Flags
+Sync Push Delete Flags
+Create Both
+SyncState *
+
+Group datameer
+Channel datameer-inbox
+Channel datameer-all
