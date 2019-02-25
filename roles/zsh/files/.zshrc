@@ -33,14 +33,6 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 setopt VI                        # Enable vi mode
 
-# ================ Key Bindings ====================
-bindkey '^xe' edit-command-line
-bindkey '^x^e' edit-command-line
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
 
 # Set normal mode timout to 0.1s
 export KEYTIMEOUT=1
@@ -91,10 +83,14 @@ source /usr/share/fzf/key-bindings.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source /usr/share/autojump/autojump.zsh
 
-bindkey '^ ' autosuggest-accept  # Ctrl Space
+# ================ Key Bindings ====================
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^ ' autosuggest-accept
 bindkey '^[^M' autosuggest-execute # Ctrl-Enter
 export GPG_TTY=$(tty)
-
 
 # end profiling
 #zprof

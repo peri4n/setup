@@ -1,5 +1,4 @@
-# vim: set ft=zsh:
-
+# vim: set ft=zsh: 
 # utility
 alias n='nvim'
 alias gw='./gradlew'
@@ -51,7 +50,7 @@ alias gst='git status --short --branch'
 
 # Kubernetes
 alias k='kubectl'
-alias kgp='kubectl get pods'
+alias kgp='kubectl get pods -o=wide'
 alias kdp='kubectl describe pods'
 
 alias kgs='kubectl get svc'
@@ -66,6 +65,11 @@ alias m="minikube"
 alias md="minikube dashboard"
 alias mst="minikube start --vm-driver=kvm2 --memory=8096 --cpus=6 --kubernetes-version=v1.10.0 -v3"
 alias ms="minikube status"
+
+# Skaffold
+alias s="skaffold"
+alias sdep="skaffold deploy"
+alias sdel="skaffold delete"
 
 # Docker
 alias d='docker'
@@ -88,6 +92,11 @@ alias twl='task log'
 # pacman
 alias p='pacman'
 alias sp='sudo pacman'
+
+# yaourt
+alias y='yaourt --color'
+alias ys='y -S'
+alias yss='y -Ss'
 
 # password store
 alias pw='pass'
