@@ -26,7 +26,7 @@ Config { font = "xft:Hasklig-10"
                         "-h", "green",
                         "-l", "red"
                         ] 10
-                    , Run Mail [("<fc=orange>P</fc>: ", "~/mail/bull_fabian_gmail/archive"), ("<fc=orange>D</fc>: ", "~/mail/fabian_bull_datameer/archive")] "mail"
+                    , Run Mail [("<fc=orange>P</fc>: ", "~/.mail/gmail/all"), ("<fc=orange>D</fc>: ", "~/.mail/datameer/all")] "mail"
                     , Run Date "<fc=orange>%a %b %d</fc> %H:%M" "date" 60
                     , Run StdinReader
                     ]
