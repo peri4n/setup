@@ -6,12 +6,16 @@ import System.Exit
 import System.IO
 import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.WindowGo
+import XMonad.Actions.Minimize
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.Minimize
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
+import XMonad.Layout.BoringWindows
 import XMonad.Layout.Maximize
+import XMonad.Layout.Minimize
 import XMonad.Layout.NoBorders
 import XMonad.Prompt
 import XMonad.Prompt.FuzzyMatch
@@ -31,7 +35,7 @@ myConfig = ewmh (withUrgencyHook NoUrgencyHook $ def {
   , focusFollowsMouse  = myFocusFollowsMouse
   , clickJustFocuses   = myClickJustFocuses
   , workspaces         = myWorkspaces
-  , handleEventHook    = handleEventHook defaultConfig <+> docksEventHook
+  , handleEventHook    = handleEventHook defaultConfig <+> docksEventHook <+> minimizeEventHook
   , manageHook         = myManageHook <+> manageHook def
   , layoutHook         = avoidStruts myLayout
   })
@@ -41,7 +45,7 @@ myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 myPP = xmobarPP { 
-        ppTitle = xmobarColor "orange" "" . shorten 50
+        ppTitle = xmobarColor "orange" "" . shorten 150
       , ppCurrent = xmobarColor "black" "orange" . wrap " " " "
       , ppUrgent = xmobarColor "red" "" . xmobarStrip
       , ppLayout = xmobarColor "orange" "" . (\x -> case x of
@@ -53,7 +57,7 @@ myPP = xmobarPP {
                 }
 
 -- Key binding to toggle the gap for the bar.
-toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask .|. shiftMask, xK_b)
+toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
 -- Click is passed through when clicked on an inactive window
 myClickJustFocuses = False
@@ -70,36 +74,33 @@ myManageHook  = composeAll [
   (className =? "Slack")                 --> doF (W.shift "Chat")
                            ]
 
-myLayout = smartBorders Full ||| maximize tiled ||| Mirror tiled
+myLayout = minimize $ smartBorders $ (boringWindows Full) ||| maximize tiled ||| Mirror tiled
     where
         tiled = Tall nmaster delta ratio
         nmaster = 1
         ratio = 1/2
         delta = 3/100
 
--- The xmonad key bindings. Add, modify or remove key bindings here.
--- (The comment formatting character is used when generating the manpage)
---
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf @ XConfig {XMonad.modMask = modMask} = M.fromList $
     -- launching and killing programs
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf) -- %! Launch terminal
-      , ((modMask,               xK_p     ), spawn "rofi -show run -modi run")
-      , ((modMask,               xK_w     ), spawn "rofi -show window")
+      , ((modMask,               xK_n     ), spawn "rofi -show run -modi run")
+      , ((modMask,               xK_a     ), spawn "rofi -show window")
       , ((modMask .|. shiftMask, xK_c     ), kill) -- %! Close the focused window
 
     -- switch layouts
       , ((modMask,               xK_space ), sendMessage NextLayout) -- %! Rotate through the available layout algorithms
       , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf) -- %!  Reset the layouts on the current workspace to default
 
-      , ((modMask,               xK_n     ), refresh) -- %! Resize viewed windows to the correct size
-
     -- move focus up or down the window stack
-      , ((modMask,               xK_Tab   ), windows W.focusDown) -- %! Move focus to the next window
-      , ((modMask .|. shiftMask, xK_Tab   ), windows W.focusUp  ) -- %! Move focus to the previous window
-      , ((modMask,               xK_j     ), windows W.focusDown) -- %! Move focus to the next window
-      , ((modMask,               xK_k     ), windows W.focusUp  ) -- %! Move focus to the previous window
-      , ((modMask,               xK_m     ), windows W.focusMaster  ) -- %! Move focus to the master window
+      , ((modMask,               xK_Tab   ), focusDown)
+      , ((modMask .|. shiftMask, xK_Tab   ), focusUp)
+      , ((modMask,               xK_j     ), windows W.focusDown)
+      , ((modMask .|. shiftMask, xK_m     ), clearBoring)
+      , ((modMask,               xK_m     ), markBoring)
+       ,((modMask,               xK_u     ), withFocused minimizeWindow)
+       ,((modMask .|. shiftMask, xK_u     ), withLastMinimized maximizeWindowAndFocus)
 
     -- modifying the window order
       , ((modMask,               xK_Return), windows W.swapMaster) -- %! Swap the focused window and the master window
@@ -114,6 +115,7 @@ myKeys conf @ XConfig {XMonad.modMask = modMask} = M.fromList $
       , ((modMask .|. shiftMask, xK_y), raiseMaybe (runInTerm "-t ranger" "ranger") (title =? "ranger"))
       , ((modMask .|. shiftMask, xK_t), raiseMaybe (runInTerm "-t task" "tasksh") (title =? "task"))
       , ((modMask,               xK_c), spawn "clipmenu")
+      , ((modMask .|. shiftMask, xK_s), spawn "maim -s ~/screenshot.png")
 
     -- floating layer support
       , ((modMask,               xK_t     ), withFocused $ windows . W.sink) -- %! Push window back into tiling
@@ -136,3 +138,9 @@ myKeys conf @ XConfig {XMonad.modMask = modMask} = M.fromList $
     [((m .|. modMask, k), windows $ f i)
       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    ++
+    -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3
+    -- mod-shift-{w,e,r} %! Move client to screen 1, 2, or 3
+    [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
