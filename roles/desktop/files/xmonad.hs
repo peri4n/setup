@@ -69,9 +69,9 @@ myWorkspaces :: [String]
 myWorkspaces = ["Web", "Dev", "Chat", "Mail"]
 
 myManageHook  = composeAll [ 
-  isPrefixOf "jetbrains"   <$> className --> doShift "Dev",
-  isPrefixOf "qutebrowser" <$> className --> doShift "Web",
-  (className =? "Slack")                 --> doF (W.shift "Chat")
+  --isPrefixOf "jetbrains"   <$> className --> doShift "Dev",
+  --isPrefixOf "qutebrowser" <$> className --> doShift "Web",
+  --(className =? "Slack")                 --> doF (W.shift "Chat")
                            ]
 
 myLayout = minimize $ smartBorders $ (boringWindows Full) ||| maximize tiled ||| Mirror tiled
