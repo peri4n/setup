@@ -98,6 +98,9 @@ alias y='yaourt --color'
 alias ys='y -S'
 alias yss='y -Ss'
 
+# systemd
+alias sc='systemctl'
+
 # password store
 alias pw='pass'
 
