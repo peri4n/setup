@@ -40,8 +40,8 @@ export KEYTIMEOUT=1
 # ================ Prompt ====================
 
 function zle-line-init zle-keymap-select {
-    PROMPT_NORMAL="%F{magenta}%(!.#.$)%f "
-    PROMPT_INS="%F{green}%(!.#.$)%f "
+    PROMPT_NORMAL="%F{magenta}%(!.#.$) %f%F{magenta}%c%f "
+    PROMPT_INS="%F{green}%(!.#.$) %f%F{magenta}%c%f "
     PROMPT="${${KEYMAP/vicmd/$PROMPT_NORMAL}/(main|viins)/$PROMPT_INS}$EPS1"
     zle reset-prompt
 }
