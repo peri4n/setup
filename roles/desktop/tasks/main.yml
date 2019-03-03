@@ -35,3 +35,4 @@
   command: "feh --bg-scale {{ role_path }}/files/wallpaper/minimal_wallpaper.jpg"
   args:
     creates: "{{ ansible_env.HOME }}/.fehbg"
+  ignore_errors: True
