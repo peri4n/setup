@@ -10,6 +10,7 @@
 	autocrlf = input
 [commit]
     gpgsign = false
+    template = ~/.gitmessage
 [color]
     ui = true
 [branch]

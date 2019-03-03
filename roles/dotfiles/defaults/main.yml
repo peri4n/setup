@@ -1,6 +1,7 @@
 ---
 dotfiles:
   - .gitconfig
+  - .gitmessage
   - .taskrc
   - .tmux.conf
   - .ideavimrc
