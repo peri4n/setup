@@ -52,13 +52,16 @@ alias gst='git status --short --branch'
 alias k='kubectl'
 alias kgp='kubectl get pods -o=wide'
 alias kdp='kubectl describe pods'
+alias krp='kubectl delete pods'
 
 alias kgs='kubectl get svc'
 alias kga='kubectl get all'
 
 alias kl="kubectl logs"
-alias bb="kubectl run -i --tty debug --image=nicolaka/netshoot --restart=Never -- sh"
-alias bbd="kubectl delete pod debug"
+alias kbb="kubectl run -i --tty debug --image=nicolaka/netshoot --restart=Never -- sh"
+alias bbbd="kubectl delete pod debug"
+alias kaa="kubectl run -i --tty aws --image=mesosphere/aws-cli --restart=Never --command -- sh"
+alias kaad="kubectl delete pod aws"
 
 # Minikube
 alias m="minikube"
@@ -101,6 +104,8 @@ alias yss='y -Ss'
 # systemd
 alias sc='systemctl'
 
+# xrandr
+alias xrq='xrandr -q'
 # password store
 alias pw='pass'
 
