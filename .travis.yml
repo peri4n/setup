@@ -1,16 +1,13 @@
-language: python
-python:
-  - 3.6
-git:
-  depth: 1
-  quiet: true
-  submodules: false
+sudo: required
 
-before_install:
-  - echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
-  - git submodule update --init --recursive
-  - sudo apt-get update -qq
-install:
-  - pip install ansible
-script:
+services:
+- docker
+
+arch:
+  packages:
+  - ansible
+  script:
   - ansible-playbook main.yml
+
+script:
+- "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
