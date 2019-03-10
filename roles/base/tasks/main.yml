@@ -1,0 +1,5 @@
+- name: Install packages
+  pacman:
+    name: ['git', 'unzip', 'ruby', 'python', 'python-virtualenv']
+    state: present
+  become: true

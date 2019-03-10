@@ -9,13 +9,14 @@
     python_versions: [python2_version, python3_version]
 
   roles:
+    - { role: 'base', tags: 'base' }
     - { role: 'desktop', tags: 'desktop' }
     - { role: 'dirs', tags: 'dirs' }
     - { role: 'dotfiles', tags: 'dotfiles' }
     - { role: 'fonts', tags: 'fonts' }
     - { role: 'mail', tags: 'mail' }
     - { role: 'news', tags: 'news' }
-    - { role: 'nvim', tags: 'nvim' }
+    - { role: 'nvim', tags: 'nvim', when: False }
     - { role: 'qutebrowser', tags: 'qutebrowser' }
     - { role: 'ranger', tags: 'ranger' }
     - { role: 'rofi', tags: 'rofi' }
