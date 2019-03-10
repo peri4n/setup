@@ -6,9 +6,9 @@
     state: directory
   with_items:
     - "dev"
-    - "dev/repos"
     - "dev/boxes"
     - "dev/envs"
+    - "dev/repos"
 
 - name: Create directories for work
   file:
