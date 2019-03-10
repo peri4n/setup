@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/peri4n/setup.svg?branch=master)](https://travis-ci.org/peri4n/setup)
+
 # My Development Setup
 
 This is a set of Ansible scripts that sets up my entire development environment as well as all the stuff I need to work at a PC (e.g. Email).
