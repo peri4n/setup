@@ -13,9 +13,14 @@ ansible-playbook main.yml --tags desktop
 ```
 ├── .config
 ├── dev
-|   ├── boxes
-|   ├── envs
-|   └── repos
+|   ├── work
+|   |   ├── boxes
+|   |   ├── envs
+|   |   └── repos
+|   └── private
+|       ├── boxes
+|       ├── envs
+|       └── repos
 └── docs
     ├── papers
     ├── templates
