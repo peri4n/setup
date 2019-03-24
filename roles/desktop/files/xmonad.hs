@@ -13,7 +13,6 @@ import XMonad.Hooks.Minimize
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
-import XMonad.Layout.BoringWindows
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
 import XMonad.Layout.NoBorders
@@ -74,7 +73,7 @@ myManageHook  = composeAll [
   --(className =? "Slack")                 --> doF (W.shift "Chat")
                            ]
 
-myLayout = minimize $ smartBorders $ (boringWindows Full) ||| maximize tiled ||| Mirror tiled
+myLayout = minimize $ smartBorders Full ||| maximize tiled
     where
         tiled = Tall nmaster delta ratio
         nmaster = 1
@@ -94,13 +93,12 @@ myKeys conf @ XConfig {XMonad.modMask = modMask} = M.fromList $
       , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf) -- %!  Reset the layouts on the current workspace to default
 
     -- move focus up or down the window stack
-      , ((modMask,               xK_Tab   ), focusDown)
-      , ((modMask .|. shiftMask, xK_Tab   ), focusUp)
+      , ((modMask,               xK_Tab   ), windows W.focusDown)
+      , ((modMask .|. shiftMask, xK_Tab   ), windows W.focusUp)
       , ((modMask,               xK_j     ), windows W.focusDown)
-      , ((modMask .|. shiftMask, xK_m     ), clearBoring)
-      , ((modMask,               xK_m     ), markBoring)
-       ,((modMask,               xK_u     ), withFocused minimizeWindow)
-       ,((modMask .|. shiftMask, xK_u     ), withLastMinimized maximizeWindowAndFocus)
+      , ((modMask,               xK_k     ), windows W.focusUp)
+       ,((modMask,               xK_m     ), withFocused minimizeWindow)
+       ,((modMask .|. shiftMask, xK_m     ), withLastMinimized maximizeWindowAndFocus)
 
     -- modifying the window order
       , ((modMask,               xK_Return), windows W.swapMaster) -- %! Swap the focused window and the master window
