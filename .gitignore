@@ -1,5 +1,7 @@
 *.retry
 *.DS_Store
+*.o
+*.hi
 
 # Ignore all shims
 roles/dotfiles/files/.zsh/shims/*.sh
