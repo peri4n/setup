@@ -11,7 +11,6 @@
   with_items:
     - "autoload"
     - "plugin"
-    - "plugin/settings"
 
 - name: Link init.vim
   file:
@@ -22,10 +21,10 @@
 - name: Link plugin settings
   file:
     src: "{{ item }}"
-    path: "{{ ansible_env.HOME }}/.config/nvim/plugin/settings/{{item | basename }}"
+    path: "{{ ansible_env.HOME }}/.config/nvim/plugin/{{item | basename }}"
     state: link
   with_fileglob:
-    - nvim/settings/*
+    - nvim/*
 
 - name: Install plugin manager
   get_url:
@@ -55,3 +54,6 @@
     deactivate
   args:
     creates: "{{ ansible_env.HOME }}/dev/envs/nvim3"
+
+- name: Install neovim plugins
+  shell: "nvim +PlugInstall +UpdateRemotePlugins +qa"

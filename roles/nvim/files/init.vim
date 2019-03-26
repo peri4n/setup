@@ -11,6 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
 " colorschemes
 Plug 'chriskempson/base16-vim'       " Colorscheme
 
+
 " utilities
 Plug 'tpope/vim-unimpaired'
 Plug 'mhinz/neovim-remote'                                               " Acces NeoVim from the shell
@@ -25,7 +26,12 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File 
 Plug 'junegunn/fzf.vim'                                                  " Fuzzy finder
 Plug 'neomake/neomake'
 
-" language specific
+"" language specific
+" Haskell
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'gabrielelana/vim-markdown'
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
