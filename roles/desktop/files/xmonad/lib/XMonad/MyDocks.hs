@@ -14,9 +14,9 @@ myBar = "xmobar"
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 myPP :: PP
 myPP = xmobarPP { 
-    ppTitle = xmobarColor "orange" "" . shorten 150
-  , ppCurrent = xmobarColor "black" "orange" . wrap " " " "
+    ppTitle = xmobarColor "white" "" . shorten 150
+  , ppCurrent = xmobarColor "black" "cyan" . wrap " " " "
   , ppUrgent = xmobarColor "red" "" . xmobarStrip
-  , ppLayout = xmobarColor "orange" ""
+  , ppLayout = xmobarColor "cyan" ""
                 }
 

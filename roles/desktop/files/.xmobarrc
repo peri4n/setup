@@ -16,9 +16,9 @@ Config { font = "xft:Hasklig-10"
        , allDesktops = True
        , overrideRedirect = True
        , commands = [
-                      Run Memory ["-t","<fc=orange>Mem</fc>: <usedratio>%"] 10
+                      Run Memory ["-t","<fc=cyan>Mem</fc>: <usedratio>%"] 10
                     , Run BatteryP ["BAT0"] [
-                        "-t", "<fc=orange><acstatus></fc>: <left>% - <timeleft>",
+                        "-t", "<fc=cyan><acstatus></fc>: <left>% - <timeleft>",
                         "--",
                         --"-c", "charge_full",
                         "-O", "AC",
@@ -26,8 +26,8 @@ Config { font = "xft:Hasklig-10"
                         "-h", "green",
                         "-l", "red"
                         ] 10
-                    , Run Mail [("<fc=orange>P</fc>: ", "~/.mail/gmail/all"), ("<fc=orange>D</fc>: ", "~/.mail/datameer/all")] "mail"
-                    , Run Date "<fc=orange>%a %b %d</fc> %H:%M" "date" 60
+                    , Run Mail [("<fc=cyan>P</fc>: ", "~/.mail/gmail/all"), ("<fc=cyan>D</fc>: ", "~/.mail/datameer/all")] "mail"
+                    , Run Date "<fc=cyan>%a %b %d</fc> %H:%M" "date" 60
                     , Run StdinReader
                     ]
        , sepChar = "%"
