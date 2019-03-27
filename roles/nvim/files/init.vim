@@ -5,6 +5,7 @@ set nocompatible
 filetype plugin on              " Enable filetype specific settings
 filetype indent on
 
+let g:ale_completion_enabled = 1
 " ================ Plugin Config ====================
 
 call plug#begin('~/.config/nvim/plugged')
@@ -28,21 +29,23 @@ Plug 'neomake/neomake'
 
 "" language specific
 " Haskell
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'gabrielelana/vim-markdown'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'w0rp/ale'
+
+" Latex
+Plug 'lervag/vimtex'
+
+" Web
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'bitc/vim-hdevtools'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
+
+" Others
 Plug 'gisphm/vim-gradle'
 Plug 'chase/vim-ansible-yaml'
-Plug 'lervag/vimtex'
+Plug 'gabrielelana/vim-markdown'
 
 call plug#end()
 
@@ -171,3 +174,13 @@ endif
 
 " Reread buffer when the file is changed in an other editor
 au FocusGained,BufEnter * checktime
+
+let g:ale_fix_on_save = 1
+
+let g:ale_linters ={
+      \   'haskell': ['hlint', 'hdevtools', 'hie'],
+      \}
+
+let g:ale_fixers = {
+\   'haskell': ['hfmt'],
+\}
