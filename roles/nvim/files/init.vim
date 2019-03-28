@@ -117,6 +117,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>m :History<cr>
 
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+
 nnoremap <leader>ff :FZF<cr>
 nnoremap <leader>fa :Ag<cr>
 
