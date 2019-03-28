@@ -38,6 +38,7 @@ Plug 'lervag/vimtex'
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'                           " Colorize RGB colors
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
 
