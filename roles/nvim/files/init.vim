@@ -25,7 +25,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                                                " Git support
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File browser
 Plug 'junegunn/fzf.vim'                                                  " Fuzzy finder
-Plug 'neomake/neomake'
 
 "" language specific
 " Haskell
