@@ -104,6 +104,9 @@ alias yss='y -Ss'
 # systemd
 alias sc='systemctl'
 
+# pulse audio
+alias pc='pactl'
+
 # xrandr
 alias xrq='xrandr -q'
 # password store
