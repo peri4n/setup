@@ -2,7 +2,6 @@
 - hosts: localhost
 
   vars:
-    work: "{{ lookup('env', 'work') }}"
     ruby_version: 2.5.0
     python2_version: 2.7.15
     python3_version: 3.6.2

@@ -6,18 +6,29 @@
     state: directory
   with_items:
     - "dev"
-    - "dev/boxes"
+    - "dev/data"
     - "dev/envs"
     - "dev/repos"
+    - "dev/tmp"
+    - "dev/tools"
 
 - name: Create directories for work
   file:
     path: "{{ ansible_env.HOME }}/{{ item }}"
     state: directory
   with_items:
-    - "dev/data"
-  when: work == "true"
-
+    - "work"
+    - "work/data"
+    - "work/envs"
+    - "work/repos"
+    - "work/tmp"
+    - "work/tools"
+    - "work/docs"
+    - "work/docs/notes"
+    - "work/docs/orga"
+    - "work/docs/papers"
+    - "work/docs/templates"
+    - "work/docs/wiki"
 
 - name: Create directories for my private stuff
   file:
@@ -25,9 +36,9 @@
     state: directory
   with_items:
     - "docs"
-    - "docs/phd"
+    - "docs/notes"
+    - "docs/orga"
+    - "docs/papers"
     - "docs/templates"
     - "docs/wiki"
-    - "docs/papers"
-  when: work == "false" or work == ""
 
