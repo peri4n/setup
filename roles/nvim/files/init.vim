@@ -25,6 +25,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                                                " Git support
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File browser
 Plug 'junegunn/fzf.vim'                                                  " Fuzzy finder
+Plug 'jremmen/vim-ripgrep'
 
 "" language specific
 " Haskell
@@ -122,7 +123,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
 nnoremap <leader>ff :FZF<cr>
-nnoremap <leader>fa :Ag<cr>
+nnoremap <leader>ss :Rg
 
 " Split bindings
 nnoremap <C-J> <C-W><C-J>
@@ -168,12 +169,6 @@ colorscheme base16-eighties
 set clipboard+=unnamedplus " use onlye a single clipboard
 
 set tags=./tags,tags;
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
-endif
 
 " Reread buffer when the file is changed in an other editor
 au FocusGained,BufEnter * checktime
