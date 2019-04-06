@@ -4,7 +4,7 @@ let g:ale_linters = {
 
 let g:ale_haskell_hie_executable = 'hie-wrapper'
 
-let b:ale_fixers = {'haskell': ['hlint', 'stylish-haskell']}
+let g:ale_fixers = {'haskell': ['hlint', 'stylish-haskell']}
 
 nnoremap <silent> [m :ALEPrevious<cr>
 nnoremap <silent> ]m :ALENext<cr>
