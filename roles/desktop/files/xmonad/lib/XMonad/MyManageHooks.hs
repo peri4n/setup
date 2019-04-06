@@ -1,7 +1,8 @@
 module XMonad.MyManageHooks where
 
-import           Data.List (isPrefixOf)
+import           Data.List       (isPrefixOf)
 import           XMonad
+import qualified XMonad.StackSet as W
 
 myManageHook =
   composeAll
