@@ -13,6 +13,8 @@ ansible-playbook main.yml --tags dirs
 ```
 ├── .config
 ├── dev # private devlopment
+|   ├── archive
+|   ├── courses
 |   ├── data
 |   ├── envs
 |   ├── tmp
