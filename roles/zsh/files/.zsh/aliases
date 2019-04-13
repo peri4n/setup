@@ -107,10 +107,11 @@ alias sc='systemctl'
 # pulse audio
 alias pc='pactl'
 
-# xrandr
-alias xrq='xrandr -q'
 # password store
 alias pw='pass'
+
+# xdg-open
+alias xo='xdg-open'
 
 ##################### 
 #      TMUX         #
@@ -127,6 +128,3 @@ alias ta='tmux attach -t'
 
 # Lists all ongoing sessions
 alias tl='tmux list-sessions'alias ta='tmux attach'
-
-# stuff
-alias r=ranger
