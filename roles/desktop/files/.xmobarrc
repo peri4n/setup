@@ -1,4 +1,4 @@
-Config { font = "xft:Hasklig-10"
+Config { font = "xft:Hasklig-6"
        , additionalFonts = []
        , borderColor = "black"
        , border = TopB
