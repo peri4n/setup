@@ -35,13 +35,16 @@ Plug 'w0rp/ale'
 " Latex
 Plug 'lervag/vimtex'
 
+" Javascript
+Plug 'pangloss/vim-javascript', { 'for': ['javascript.jsx', 'javascript'] }
+Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] }
+
 " Web
-Plug 'alvan/vim-closetag'
-Plug 'othree/html5.vim'
+Plug 'mattn/emmet-vim', { 'commit': 'e6fb10d22a9bd2a02c386c81486a065e71c6a92d', 'for': ['javascript.jsx', 'html', 'css'] }
+"Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'                           " Colorize RGB colors
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'pangloss/vim-javascript'
 
 " Others
 Plug 'gisphm/vim-gradle'
