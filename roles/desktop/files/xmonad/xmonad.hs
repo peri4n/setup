@@ -2,6 +2,7 @@ import           XMonad
 import           XMonad.Hooks.DynamicLog   (statusBar)
 import           XMonad.Hooks.EwmhDesktops (ewmh)
 import           XMonad.Hooks.ManageDocks  (avoidStruts)
+import           XMonad.Hooks.SetWMName
 import           XMonad.Hooks.UrgencyHook
 
 -- Custom modules
@@ -19,6 +20,7 @@ myConfig =
     (withUrgencyHook NoUrgencyHook $
      def
        { modMask = mod4Mask
+       , startupHook = setWMName "LG3D"
        , borderWidth = 1
        , terminal = "st"
        , normalBorderColor = "darkgrey"
