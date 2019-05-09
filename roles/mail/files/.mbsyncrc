@@ -23,28 +23,16 @@ Subfolders Verbatim
 Path ~/.mail/gmail/
 Inbox ~/.mail/gmail/Inbox
 
-Channel gmail-inbox
+Channel gmail
 Master :gmail-remote:
 Slave :gmail-local:
-Patterns "INBOX"
-Sync Pull New ReNew Flags
-Sync Push Delete Flags
-Create Both
-Expunge Both
-SyncState *
-
-Channel gmail-all
-Master :gmail-remote:"[Google Mail]/All Mail"
-Slave :gmail-local:"all"
-Sync Pull New ReNew Flags
-Sync Push Delete Flags
+Patterns *
 Create Both
 Expunge Both
 SyncState *
 
 Group private
-Channel gmail-inbox
-Channel gmail-all
+Channel gmail
 
 #########################
 #    Work account    #
@@ -71,23 +59,13 @@ Subfolders Verbatim
 Path ~/.mail/datameer/
 Inbox ~/.mail/datameer/Inbox
 
-Channel datameer-inbox
+Channel datameer
 Master :datameer-remote:
 Slave :datameer-local:
-Patterns "INBOX"
-Sync Pull New ReNew Flags
-Sync Push Delete Flags
-Create Both
-SyncState *
-
-Channel datameer-all
-Master :datameer-remote:"[Gmail]/All Mail"
-Slave :datameer-local:"all"
-Sync Pull New ReNew Flags
-Sync Push Delete Flags
+Patterns *
+Expunge Both
 Create Both
 SyncState *
 
 Group datameer
-Channel datameer-inbox
-Channel datameer-all
+Channel datameer
