@@ -90,6 +90,7 @@ alias sz='source ~/.zshrc'
 alias tw='task'
 alias twa='task add'
 alias twd='task done'
+alias twr='task ready'
 alias twl='task log'
 
 # pacman
