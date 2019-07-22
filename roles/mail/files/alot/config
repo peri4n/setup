@@ -1,4 +1,4 @@
-initial_command = search to:bull.fabian@googlemail.com and tag:inbox; search to:fabian.bull@datameer.com and tag:inbox; bufferlist; taglist; buffer 2
+initial_command = search tag:inbox; bufferlist; taglist; buffer 0
 theme = my
 thread_focus_linewise = False
 prefer_plaintext = False
@@ -27,6 +27,8 @@ prefer_plaintext = False
 [bindings]
   [[search]]
     enter = select; fold *; unfold tag:unread;
-    x = untag unread; untag inbox
+    X = untag unread; untag inbox
+    A = tag actionable
+    L = tag later
   [[thread]]
     u = pipeto urlscan

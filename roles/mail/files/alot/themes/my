@@ -24,11 +24,11 @@
 [namedqueries]
     line_even = '','','light gray','black','light gray','g0'
     line_odd = '','','light gray','black','light gray','g0'
-    line_focus = 'standout','','black','dark cyan','black','dark cyan'
+    line_focus = 'standout','','black','dark red','black','dark red'
 [taglist]
     line_even = '','','light gray','black','light gray','black'
     line_odd = '','','light gray','black','light gray','black'
-    line_focus = 'standout','','black','dark cyan','black','dark cyan'
+    line_focus = 'standout','','black','dark red','black','dark red'
 [thread]
     arrow_heads = '','','dark gray','black','dark gray','black'
     arrow_bars = '','','dark gray','black','dark gray','black'

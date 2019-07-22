@@ -26,7 +26,7 @@ Inbox ~/.mail/gmail/Inbox
 Channel gmail
 Master :gmail-remote:
 Slave :gmail-local:
-Patterns *
+Patterns "INBOX" "[Google Mail]/All Mail"
 Create Both
 Expunge Both
 SyncState *
@@ -62,9 +62,9 @@ Inbox ~/.mail/datameer/Inbox
 Channel datameer
 Master :datameer-remote:
 Slave :datameer-local:
-Patterns *
-Expunge Both
+Patterns "INBOX" "[Gmail]/All Mail"
 Create Both
+Expunge Both
 SyncState *
 
 Group datameer
