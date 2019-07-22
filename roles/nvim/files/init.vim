@@ -41,15 +41,16 @@ Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] }
 
 " Web
 Plug 'mattn/emmet-vim', { 'commit': 'e6fb10d22a9bd2a02c386c81486a065e71c6a92d', 'for': ['javascript.jsx', 'html', 'css'] }
+
 "Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'ap/vim-css-color'                           " Colorize RGB colors
+Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+Plug 'ap/vim-css-color', { 'for': 'css' }                                 " Colorize RGB colors
 Plug 'cakebaker/scss-syntax.vim'
 
 " Others
 Plug 'gisphm/vim-gradle'
 Plug 'chase/vim-ansible-yaml'
-Plug 'gabrielelana/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
