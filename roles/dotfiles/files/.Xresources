@@ -1,26 +1,8 @@
-
-Xft.dpi: 192
 Xft.autohint: 1
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
-Xft.rgba: rgb
 
 Xcursor*theme: aero-large-drop
 Xcursor*size: 24
-
-rofi.separator-style: solid
-rofi.sidebar-mode: true
-rofi.bw: 1
-rofi.columns: 1
-rofi.padding: 16
-
-rofi.yoffset: 20 
-rofi.fake-transparency: false
-rofi.location: 1
-rofi.width: 100 
-rofi.font: Hasklig 12
-rofi.lines: 15
-rofi.fixed-num-lines: true
-

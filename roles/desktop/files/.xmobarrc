@@ -1,4 +1,4 @@
-Config { font = "xft:Hasklig-6"
+Config { font = "xft:Hasklig-12"
        , additionalFonts = []
        , borderColor = "black"
        , border = TopB
@@ -16,9 +16,9 @@ Config { font = "xft:Hasklig-6"
        , allDesktops = True
        , overrideRedirect = True
        , commands = [
-                      Run Memory ["-t","<fc=cyan>Mem</fc>: <usedratio>%"] 10
+                      Run Memory ["-t","<fc=#ff8080>Mem</fc>: <usedratio>%"] 10
                     , Run BatteryP ["BAT0"] [
-                        "-t", "<fc=cyan><acstatus></fc>: <left>% - <timeleft>",
+                        "-t", "<fc=#ff8080><acstatus></fc>: <left>% - <timeleft>",
                         "--",
                         --"-c", "charge_full",
                         "-O", "AC",
@@ -26,8 +26,8 @@ Config { font = "xft:Hasklig-6"
                         "-h", "green",
                         "-l", "red"
                         ] 10
-                    , Run Mail [("<fc=cyan>P</fc>: ", "~/.mail/gmail/all"), ("<fc=cyan>D</fc>: ", "~/.mail/datameer/all")] "mail"
-                    , Run Date "<fc=cyan>%a %b %d</fc> %H:%M" "date" 60
+                    , Run Mail [("<fc=#ff8080>P</fc>: ", "~/.mail/gmail/Inbox/"), ("<fc=#ff8080>D</fc>: ", "~/.mail/datameer/Inbox/")] "mail"
+                    , Run Date "<fc=#ff8080>%a %b %d</fc> %H:%M" "date" 60
                     , Run StdinReader
                     ]
        , sepChar = "%"

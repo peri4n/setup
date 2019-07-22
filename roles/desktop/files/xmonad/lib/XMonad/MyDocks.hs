@@ -1,7 +1,7 @@
 module XMonad.MyDocks where
 
-import XMonad
-import XMonad.Hooks.DynamicLog
+import           XMonad
+import           XMonad.Hooks.DynamicLog
 
 -- Key binding to toggle the gap for the bar.
 myToggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
@@ -13,10 +13,10 @@ myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 myPP :: PP
-myPP = xmobarPP { 
+myPP = xmobarPP {
     ppTitle = xmobarColor "white" "" . shorten 150
-  , ppCurrent = xmobarColor "black" "cyan" . wrap " " " "
-  , ppUrgent = xmobarColor "red" "" . xmobarStrip
-  , ppLayout = xmobarColor "cyan" ""
+  , ppCurrent = xmobarColor "#ff8080" "" . wrap " " " "
+  , ppUrgent = xmobarColor "yellow" "" . xmobarStrip
+  , ppLayout = xmobarColor "#ff8080" ""
                 }
 

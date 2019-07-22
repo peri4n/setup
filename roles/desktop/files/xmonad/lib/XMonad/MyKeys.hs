@@ -19,12 +19,14 @@ myKeys conf@XConfig {XMonad.modMask = modMask} =
   M.fromList $
     -- launching and killing programs
   [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf) -- %! Launch terminal
-  , ((modMask, xK_n), spawn "rofi -show run -modi run")
-  , ((modMask, xK_a), spawn "rofi -show window")
+  , ((modMask, xK_n), spawn "dmenu_run_history.sh")
+  , ((modMask, xK_a), spawn "select_window.sh")
   , ((modMask .|. shiftMask, xK_c), kill) -- %! Close the focused window
+
     -- switch layouts
   , ((modMask, xK_space), sendMessage NextLayout) -- %! Rotate through the available layout algorithms
   , ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf) -- %!  Reset the layouts on the current workspace to default
+
     -- move focus up or down the window stack
   , ((modMask, xK_Tab), windows W.focusDown)
   , ((modMask .|. shiftMask, xK_Tab), windows W.focusUp)
@@ -32,26 +34,30 @@ myKeys conf@XConfig {XMonad.modMask = modMask} =
   , ((modMask, xK_k), windows W.focusUp)
   , ((modMask, xK_m), withFocused minimizeWindow)
   , ((modMask .|. shiftMask, xK_m), withLastMinimized maximizeWindowAndFocus)
+
     -- modifying the window order
   , ((modMask, xK_Return), windows W.swapMaster) -- %! Swap the focused window and the master window
   , ((modMask .|. shiftMask, xK_j), windows W.swapDown) -- %! Swap the focused window with the next window
   , ((modMask .|. shiftMask, xK_k), windows W.swapUp) -- %! Swap the focused window with the previous window
+
     -- resizing the master/slave ratio
   , ((modMask, xK_h), sendMessage Shrink) -- %! Shrink the master area
   , ((modMask, xK_l), sendMessage Expand) -- %! Expand the master area
-  , ( (modMask .|. shiftMask, xK_p)
-    , raiseMaybe (runInTerm "-t htop" "htop") (title =? "htop"))
-  , ( (modMask .|. shiftMask, xK_y)
-    , raiseMaybe (runInTerm "-t ranger" "ranger") (title =? "ranger"))
-  , ( (modMask .|. shiftMask, xK_t)
-    , raiseMaybe (runInTerm "-t task" "tasksh") (title =? "task"))
-  , ((modMask, xK_c), spawn "clipmenu")
+  , ((modMask .|. shiftMask, xK_p), raiseMaybe (runInTerm "-t htop" "htop") (title =? "htop"))
+  , ((modMask .|. shiftMask, xK_y), raiseMaybe (runInTerm "-t ranger" "ranger") (title =? "ranger"))
+  , ((modMask .|. shiftMask, xK_t), raiseMaybe (runInTerm "-t task" "tasksh") (title =? "task"))
+  , ((modMask .|. shiftMask, xK_o), raiseMaybe (runInTerm "-t mail" "alot") (title =? "mail"))
+  , ((modMask .|. shiftMask, xK_u), raiseMaybe (runInTerm "-t music" "ncmpcpp") (title =? "music"))
   , ((modMask .|. shiftMask, xK_s), spawn "maim -s ~/screenshot.png")
+  , ((modMask, xK_c), spawn "clipmenu")
+
     -- floating layer support
   , ((modMask, xK_t), withFocused $ windows . W.sink) -- %! Push window back into tiling
+
     -- increase or decrease number of windows in the master area
   , ((modMask, xK_comma), sendMessage (IncMasterN 1)) -- %! Increment the number of windows in the master area
   , ((modMask, xK_period), sendMessage (IncMasterN (-1))) -- %! Deincrement the number of windows in the master area
+
     -- quit, or restart
   , ((modMask .|. shiftMask, xK_q), io exitSuccess) -- %! Quit xmonad
   , ( (modMask, xK_q)

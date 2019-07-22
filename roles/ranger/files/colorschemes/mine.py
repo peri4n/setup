@@ -10,10 +10,6 @@ class Default(ColorScheme):
       return default_colors
 
     elif context.in_browser:
-      if context.selected:
-        attr = reverse
-      else:
-        attr = normal
       if context.empty or context.error:
         bg = black
       if context.border:
@@ -29,7 +25,7 @@ class Default(ColorScheme):
         fg = cyan
       if context.directory:
         attr |= normal
-        fg = orange
+        fg = white
       elif context.executable and not \
           any((context.media, context.container,
             context.fifo, context.socket)):
@@ -56,7 +52,7 @@ class Default(ColorScheme):
       if context.main_column:
         if context.selected:
           fg = orange
-          attr |= normal
+          attr |= bold
         if context.marked:
           attr |= bold
           fg = yellow
@@ -100,8 +96,5 @@ class Default(ColorScheme):
     if context.in_taskview:
       if context.title:
         fg = blue
-
-      if context.selected:
-        attr |= reverse
 
     return fg, bg, attr
