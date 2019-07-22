@@ -63,6 +63,12 @@ alias bbbd="kubectl delete pod debug"
 alias kaa="kubectl run -i --tty aws --image=mesosphere/aws-cli --restart=Never --command -- sh"
 alias kaad="kubectl delete pod aws"
 
+# Helm
+alias h="helm"
+alias hi="helm install"
+alias hd="helm delete"
+alias hdp="helm delete --purge"
+
 # Minikube
 alias m="minikube"
 alias md="minikube dashboard"
@@ -84,6 +90,7 @@ alias cz='$EDITOR ~/.zshrc'
 alias ct='$EDITOR ~/.tmux.conf'
 alias ca='$EDITOR ~/.zsh/aliases'
 alias cx='$EDITOR ~/.xmonad/xmonad.hs'
+alias cxk='$EDITOR ~/.xmonad/lib/XMonad/MyKeys.hs'
 alias sz='source ~/.zshrc'
 
 # taskwarrior
