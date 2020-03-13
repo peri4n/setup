@@ -12,3 +12,9 @@
 
 # Files
 data.location=~/.task
+
+report.work.description=List of open tasks at work
+report.work.columns=id,project,description.count
+report.work.labels=ID,Proj,Desc
+report.work.sort=project+/,entry+
+report.work.filter=tag:work status:pending
