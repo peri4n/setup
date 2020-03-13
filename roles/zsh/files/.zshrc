@@ -88,8 +88,6 @@ bindkey '^w' backward-kill-word
 bindkey '^ ' autosuggest-accept
 bindkey '^[^M' autosuggest-execute # Ctrl-Enter
 export GPG_TTY=$(tty)
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
 
 # end profiling
 #zprof
