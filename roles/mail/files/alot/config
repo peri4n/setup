@@ -31,4 +31,4 @@ prefer_plaintext = False
     A = tag actionable
     L = tag later
   [[thread]]
-    u = pipeto urlscan
+    u = pipeto 'urlscan --compact --dedupe --nohelp'

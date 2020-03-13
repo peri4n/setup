@@ -28,9 +28,12 @@ Plug 'junegunn/fzf.vim'                                                  " Fuzzy
 Plug 'jremmen/vim-ripgrep'
 
 "" language specific
+" general
+Plug 'w0rp/ale'
+
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
-Plug 'w0rp/ale'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 
 " Latex
 Plug 'lervag/vimtex'
@@ -176,6 +179,16 @@ set tags=./tags,tags;
 
 " Reread buffer when the file is changed in an other editor
 au FocusGained,BufEnter * checktime
+
+let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
+map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
+map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
+map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
 let g:ale_fix_on_save = 1
 
