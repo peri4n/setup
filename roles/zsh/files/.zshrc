@@ -74,9 +74,6 @@ FAST_HIGHLIGHT_STYLES[subcommand]='fg=yellow'
 source $HOME/.zsh/exports
 source $HOME/.zsh/aliases
 source $HOME/.zsh/functions
-if [ -d ~/.zsh/shims ]; then
-    for f in $HOME/.zsh/shims/*.sh; do source $f; done
-fi
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
