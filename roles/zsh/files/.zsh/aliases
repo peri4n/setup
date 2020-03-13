@@ -47,6 +47,7 @@ alias gll='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset 
 alias gls='git log --pretty=format:"%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]" --decorate --numstat'
 alias gp='git push'
 alias gst='git status --short --branch'
+alias grc="git rev-parse HEAD | tr -d '\n' | xsel"
 
 # Kubernetes
 alias k='kubectl'
@@ -90,7 +91,7 @@ alias cz='$EDITOR ~/.zshrc'
 alias ct='$EDITOR ~/.tmux.conf'
 alias ca='$EDITOR ~/.zsh/aliases'
 alias cx='$EDITOR ~/.xmonad/xmonad.hs'
-alias cxk='$EDITOR ~/.xmonad/lib/XMonad/MyKeys.hs'
+alias cxk='$EDITOR ~/.xmonad/src/XMonad/MyKeys.hs'
 alias sz='source ~/.zshrc'
 
 # taskwarrior
@@ -99,6 +100,9 @@ alias twa='task add'
 alias twd='task done'
 alias twr='task ready'
 alias twl='task log'
+
+# newsboat
+alias nb='newsboat'
 
 # pacman
 alias p='pacman'
