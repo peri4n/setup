@@ -33,10 +33,17 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-xbindkeys
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --auto
 
-setxkbmap -variant colemak -option ctrl:nocaps
+#xbindkeys
+
+setxkbmap -variant colemak -option ctrl:nocaps -option compose:rwin-altgr
 
 ~/.fehbg &
 
-xmonad
+#compton --vsync &
+
+export VDPAU_DRIVER=va_gl
+
+exec ~/.xmonad/xmonad-x86_64-linux

@@ -15,8 +15,18 @@ Config { font = "xft:Hasklig-12"
        , iconRoot = "."
        , allDesktops = True
        , overrideRedirect = True
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %dynnetwork% | %mail% | %memory% %battery% | %date%"
        , commands = [
-                      Run Memory ["-t","<fc=#ff8080>Mem</fc>: <usedratio>%"] 10
+                    -- network activity monitor (dynamic interface resolution)
+                      Run DynNetwork     [ "--template" , "<fc=#ff8080><dev></fc>: <tx> kB/s <rx> kB/s"
+                                         , "--Low"      , "1000000"       -- units: B/s
+                                         , "--High"     , "5000000"       -- units: B/s
+                                         , "--low"      , "white"
+                                         , "--normal"   , "orange"
+                                         , "--high"     , "#ff8080"
+                                         ] 10
+                    , Run Memory ["-t","<fc=#ff8080>Mem</fc>: <usedratio>%"] 10
                     , Run BatteryP ["BAT0"] [
                         "-t", "<fc=#ff8080><acstatus></fc>: <left>% - <timeleft>",
                         "--",
@@ -30,7 +40,4 @@ Config { font = "xft:Hasklig-12"
                     , Run Date "<fc=#ff8080>%a %b %d</fc> %H:%M" "date" 60
                     , Run StdinReader
                     ]
-       , sepChar = "%"
-       , alignSep = "}{"
-       , template = "%StdinReader% }{ %mail% | %memory% %battery% | %date%"
        }
