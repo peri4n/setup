@@ -15,3 +15,7 @@ export MANPAGER="nvim -c 'set ft=man' -"
 
 # Set Java Home
 export JAVA_HOME=/usr/lib/jvm/default-runtime/
+
+# Datameer
+export CENTOS7_USER_KEY=fabian.bull-ec2
+export CENTOS7_USER_KEY_PATH=~/.ssh/fabian.bull-ec2.pem
