@@ -2,9 +2,6 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-filetype plugin on              " Enable filetype specific settings
-filetype indent on
-
 let g:ale_completion_enabled = 1
 " ================ Plugin Config ====================
 
@@ -14,26 +11,24 @@ Plug 'chriskempson/base16-vim'       " Colorscheme
 
 
 " utilities
+Plug 'neovim/nvim-lsp'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete-lsp'
+Plug 'neovim/nvim-lsp'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-unimpaired'
 Plug 'mhinz/neovim-remote'                                               " Acces NeoVim from the shell
 Plug 'scrooloose/nerdcommenter'                                          " Comment multiple lines
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }            " Auto complete
 Plug 'Shougo/neosnippet'                                                 " Template engine
 Plug 'Shougo/neosnippet-snippets'                                        " Snippets collection
-Plug 'oblitum/rainbow'                                                   " Colored paranthesis
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'                                                " Git support
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File browser
 Plug 'junegunn/fzf.vim'                                                  " Fuzzy finder
 Plug 'jremmen/vim-ripgrep'
 
-"" language specific
-" general
-Plug 'w0rp/ale'
-
 " Haskell
-Plug 'neovimhaskell/haskell-vim'
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
+Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 
 " Latex
 Plug 'lervag/vimtex'
@@ -42,15 +37,13 @@ Plug 'lervag/vimtex'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript.jsx', 'javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] }
 
-" Web
-Plug 'mattn/emmet-vim', { 'commit': 'e6fb10d22a9bd2a02c386c81486a065e71c6a92d', 'for': ['javascript.jsx', 'html', 'css'] }
-
 "Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
 Plug 'ap/vim-css-color', { 'for': 'css' }                                 " Colorize RGB colors
 Plug 'cakebaker/scss-syntax.vim'
 
 " Others
+Plug 'vimwiki/vimwiki'
 Plug 'gisphm/vim-gradle'
 Plug 'chase/vim-ansible-yaml'
 Plug 'plasticboy/vim-markdown'
@@ -70,6 +63,8 @@ set hidden                      " Switch buffers without saving them
 set showmatch                   " Show matching braces
 set autoread                    " Reread file content if file was changed outside of vim
 set cursorline                  " Highlight current line
+set spell                       " Turn on spelling
+set spelllang=en,de
 syntax on                       " Turn on syntax highlighting
 
 " ================ Turn Off Swap Files ==============
@@ -124,6 +119,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>N :NERDTreeFind<cr>
 nnoremap <leader>m :History<cr>
 
 nnoremap <leader>gs :Gstatus<cr>
@@ -180,22 +176,21 @@ set tags=./tags,tags;
 " Reread buffer when the file is changed in an other editor
 au FocusGained,BufEnter * checktime
 
-let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
-map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
-map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
-map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
-map <Leader>lb :call LanguageClient#textDocument_references()<CR>
-map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
-map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
 
-let g:ale_fix_on_save = 1
+let g:haskell_indent_disable = 1
 
-let g:ale_linters ={
-      \   'haskell': ['hlint', 'hdevtools', 'hie'],
-      \}
+lua << EOF
+require'nvim_lsp'.hie.setup{}
+EOF
 
-let g:ale_fixers = {
-\   'haskell': ['hfmt'],
-\}
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
