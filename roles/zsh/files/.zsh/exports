@@ -4,6 +4,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
+export EDITOR=nvim
 
 export PATH=$PATH:$HOME/.local/bin/
 
@@ -15,6 +16,10 @@ export MANPAGER="nvim -c 'set ft=man' -"
 
 # Set Java Home
 export JAVA_HOME=/usr/lib/jvm/default-runtime/
+
+# Set N cache directory
+export N_PREFIX=$HOME/.nvm
+export PATH=$N_PREFIX/bin:$PATH
 
 # Datameer
 export CENTOS7_USER_KEY=fabian.bull-ec2

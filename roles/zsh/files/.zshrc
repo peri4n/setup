@@ -87,7 +87,11 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^ ' autosuggest-accept
 bindkey '^[^M' autosuggest-execute # Ctrl-Enter
+
 export GPG_TTY=$(tty)
+
+# ================ System Settings =================
+ulimit -s 65536
 
 # end profiling
 #zprof

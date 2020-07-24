@@ -1,6 +1,6 @@
 # vim: set ft=zsh: 
 # utility
-alias n='nvim'
+alias v='nvim'
 alias gw='./gradlew'
 alias gwi='./gradlew -i'
 alias mkdir='mkdir -pv'
@@ -109,7 +109,6 @@ alias p='pacman'
 alias sp='sudo pacman'
 
 # yaourt
-alias y='yaourt --color'
 alias ys='y -S'
 alias yss='y -Ss'
 
