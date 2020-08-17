@@ -17,6 +17,10 @@ export MANPAGER="nvim -c 'set ft=man' -"
 # Set Java Home
 export JAVA_HOME=/usr/lib/jvm/default-runtime/
 
+# Set nnn bookmarks
+export NNN_BMS='n:~/docs/notes/;D:~/downloads/'
+
+
 # Set N cache directory
 export N_PREFIX=$HOME/.nvm
 export PATH=$N_PREFIX/bin:$PATH
@@ -24,3 +28,4 @@ export PATH=$N_PREFIX/bin:$PATH
 # Datameer
 export CENTOS7_USER_KEY=fabian.bull-ec2
 export CENTOS7_USER_KEY_PATH=~/.ssh/fabian.bull-ec2.pem
+

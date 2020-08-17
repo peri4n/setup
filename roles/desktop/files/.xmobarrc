@@ -1,4 +1,4 @@
-Config { font = "xft:Hasklig-12"
+Config { font = "xft:JetBrains Mono Light-11"
        , additionalFonts = []
        , borderColor = "black"
        , border = TopB

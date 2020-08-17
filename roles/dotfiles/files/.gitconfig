@@ -9,7 +9,7 @@
     editor = nvim
 	autocrlf = input
 [commit]
-    gpgsign = false
+    gpgsign = true
     template = ~/.gitmessage
 [color]
     ui = true
