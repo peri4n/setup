@@ -2,7 +2,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 " ================ Plugin Config ====================
 
 call plug#begin('~/.config/nvim/plugged')
@@ -11,11 +11,7 @@ Plug 'chriskempson/base16-vim'       " Colorscheme
 
 
 " utilities
-Plug 'neovim/nvim-lsp'
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/deoplete-lsp'
-Plug 'neovim/nvim-lsp'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-unimpaired'
 Plug 'mhinz/neovim-remote'                                               " Acces NeoVim from the shell
 Plug 'scrooloose/nerdcommenter'                                          " Comment multiple lines
@@ -126,7 +122,8 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
 nnoremap <leader>ff :FZF<cr>
-nnoremap <leader>ss :Rg
+nnoremap <leader>fs :Rg
+nnoremap <leader>bb :Buffers<cr>
 
 " Split bindings
 nnoremap <C-J> <C-W><C-J>
@@ -181,16 +178,26 @@ let NERDTreeAutoDeleteBuffer = 1
 
 let g:haskell_indent_disable = 1
 
-lua << EOF
-require'nvim_lsp'.hie.setup{}
-EOF
+nmap <leader>qf  <Plug>(coc-fix-current)
 
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
